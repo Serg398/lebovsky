@@ -1,0 +1,121 @@
+<mvc:View
+	controllerName="sap.ui.demo.basicTemplate.controller.Home"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	displayBlock="true">
+	<App>
+		<Page
+			id="Main"
+			showHeader="false"
+			enableScrolling="false">
+			<IconTabBar id="idIconTabBarMulti">
+				<items>
+					<IconTabFilter
+						text="События"
+						icon="sap-icon://hint"
+						key="info">
+						<Button
+							text="Новый чек"
+							press="openFragment"
+							class="sapUiSmallMarginBegin" />
+						<List
+							class="sapUiSmallMarginTop"
+							delete="delItemList"
+							mode="Delete"
+							id="ShortProductList"
+							items="{Table>/front/event}">
+							<CustomListItem
+								type="Active"
+								press="playItem">
+								<HBox>
+									<HBox
+										width="80%"
+										alignItems="Center"
+										alignContent="Center">
+										<Image
+											class="imgCahsItem"
+											src="https://cdn-icons-png.flaticon.com/512/1241/1241629.png?w=826"
+											width="50px" />
+										<Text
+											width="5rem"
+											text="Чек № {Table>id}" />
+										<Text
+											class="dp"
+											width="5rem"
+											text="{Table>DP}" />
+										<VBox>
+											<HBox>
+												<Text
+													width="3rem"
+													text="Кто: "
+													class="sapUiSmallMarginBegin" />
+												<Text
+													width="30rem"
+													text="{Table>name1}"
+													class="sapUiSmallMarginBegin" />
+											</HBox>
+											<HBox>
+												<Text
+													width="3rem"
+													text="Кому: "
+													class="sapUiSmallMarginBegin" />
+												<Text
+													width="30rem"
+													text="{Table>name2}"
+													class="sapUiSmallMarginBegin" />
+											</HBox>
+										</VBox>
+										
+									</HBox>
+									<HBox
+										width="20%"
+										alignItems="Center"
+										alignContent="Center">
+										<Text
+											width="6.5rem"
+											text="Размер суммы: "
+											class="sapUiSmallMarginBegin" />
+										<Text
+											width="4rem"
+											text="{Table>money}" />
+										<Button
+											icon="sap-icon://comment"
+											press="comentPopoverPress" />
+									</HBox>
+								</HBox>
+							</CustomListItem>
+						</List>
+					</IconTabFilter>
+					<IconTabFilter
+						text="Сводка"
+						icon="sap-icon://attachment"
+						key="attachments">
+						<FlexBox
+							alignItems="Center"
+							alignContent="Center"
+							direction="Row"
+							renderType="Bare"
+							wrap="Wrap"
+							width="100%"
+							displayInline="true"
+							fitContainer="true"
+							items="{Table>/front/users}">
+							<items>
+								<GenericTile
+									header="{Table>name}"
+									subheader="Баланс: {Table>total}"
+									press="onTilePress">
+									<TileContent>
+										<ImageContent src="https://cdn-icons-png.flaticon.com/512/18/18221.png?w=826" />
+									</TileContent>
+								</GenericTile>
+							</items>
+						</FlexBox>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</Page>
+	</App>
+</mvc:View>

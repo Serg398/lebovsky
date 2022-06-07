@@ -1,0 +1,41 @@
+.sapMITH {
+    background-color: rgb(145, 204, 255);
+}
+
+.sapMGT {
+    background: #91ccff52;
+}
+
+.imgCahsItem {
+    padding: 0.5rem;
+    margin-top: 0.3rem;
+}
+
+
+.fragmentLabel {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-top: 0.3rem;
+    
+}
+
+.sapMDialog.sapMPopup-CTX>header .sapMHeader-CTX, .sapMDialog.sapMPopup-CTX>header .sapMSubHeader-CTX {
+    background-color: rgb(145, 204, 255);
+}
+
+.datePicker {
+    padding-left:  1rem;
+}
+
+.money {
+    padding-left: 5rem;
+}
+
+.sapMGT:hover {
+    background: rgb(145, 204, 255);
+}
+
+.dp {
+    padding-left: 0.5rem;
+}
+
