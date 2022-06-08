@@ -1,0 +1,69 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Dialog
+        class="sapUiSizeCompact"
+        contentHeight="400px"
+        contentWidth="800px"
+        title="Новый чек">
+        <HBox>
+            <Text text="Дата: " />
+            <DatePicker
+                id="DP"
+                displayFormat="short"
+                class="sapUiSmallMarginBottom"
+                value="{Table>/new/DP}" />
+        </HBox>
+        <HBox>
+            <Text text="От: " />
+            <Select
+                forceSelection="false"
+                selectedKey="{Table>/new/name1}"
+                items="{Table>/front/users}">
+                <core:Item
+                    key="{Table>name}"
+                    text="{Table>name}" />
+            </Select>
+            <Text text="кому: " />
+            <Select
+                forceSelection="false"
+                selectedKey="{Table>/new/name2}"
+                items="{Table>/front/users}">
+                <core:Item
+                    key="{Table>name}"
+                    text="{Table>name}" />
+            </Select>
+            <Text text="Сумма: " />
+            <Input
+                value="{path: 'Table>/new/money',
+                        type: 'sap.ui.model.type.Integer'}"
+                placeholder="Введите сумму"
+                class="sapUiSmallMarginBottom" />
+        </HBox>
+        <Text text="Комментарий:" />
+        <Input
+            value="{Table>/new/comments}"
+            placeholder="Комментарий"
+            class="sapUiSmallMarginBottom" />
+        <HBox>
+            <Button
+                type="Accept"
+                text="ОК"
+                press="addEvent"
+                ariaDescribedBy="acceptButtonDescription genericButtonDescription">
+                <layoutData>
+                    <FlexItemData growFactor="1" />
+                </layoutData>
+            </Button>
+            <Button
+                type="Reject"
+                text="Отмена"
+                press="onCloseDialog"
+                ariaDescribedBy="acceptButtonDescription genericButtonDescription">
+                <layoutData>
+                    <FlexItemData growFactor="1" />
+                </layoutData>
+            </Button>
+        </HBox>
+    </Dialog>
+</core:FragmentDefinition>
