@@ -10,8 +10,26 @@ sap.ui.define([
 		onInit: function () {
 			var oModel = this.getModel("Table");
 			oModel.setProperty("/new", {})
+			oModel.setProperty("/front", [])
 			this.oRouter = this.getOwnerComponent().getRouter();
-			this.restUpdateList()
+			fetch('http://127.0.0.1:5000/', {
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			}).then((response) => {
+				return response.json();
+			}).then((data) => {
+				console.log(data);
+				if (data.status === 204) {
+					this.oRouter.navTo("auth");
+				} else {
+					this.restUpdateList()
+				}
+
+			});
+			// this.restUpdateList()
+			// this.oRouter.navTo("auth");
+
 		},
 
 		getModel: function (sName) {
@@ -24,22 +42,21 @@ sap.ui.define([
 
 		restUpdateList: function () {
 			var oModel = this.getModel("Table");
-			fetch('http://127.0.0.1:5000/list', {
+			fetch('http://127.0.0.1:5000/', {
 				headers: {
 					'Content-Type': 'application/json'
 				}
 			}).then((response) => {
 				return response.json();
-			})
-				.then((data) => {
-					console.log(data);
-					oModel.setProperty("/front", data)
-					return true
-				});
-
+			}).then((data) => {
+				console.log(data);
+				oModel.setProperty("/front", data)
+				return true
+			});
 		},
 
 		setBD: async function (link, parametr) {
+
 			let response = await fetch('http://127.0.0.1:5000/' + link, {
 				method: 'POST',
 				body: JSON.stringify(parametr),
@@ -54,8 +71,11 @@ sap.ui.define([
 				alert('error', response.status);
 			}
 		},
-		
+
 		openFragment: function () {
+			var oModel = this.getModel("Table");
+			var oUsers = oModel.getProperty("/front")
+			console.log(oUsers)
 			if (!this.pDialog) {
 				this.pDialog = Fragment.load({
 					name: "sap.ui.demo.basicTemplate.view.AddEvent",
@@ -94,7 +114,7 @@ sap.ui.define([
 			var oNewItem = oModel.getProperty("/new");
 			var oTempItem = oModel.getProperty("/tempitem");
 			if (oNewItem.id == undefined) {
-				var sID = oFront.id + 1
+				var sID = oFront.id[0].id + 1
 				oNewItem.id = sID
 				if (oNewItem.DP === undefined ||
 					oNewItem.money === undefined ||
@@ -107,13 +127,20 @@ sap.ui.define([
 					oEvent.getSource().getParent().getParent().close()
 				};
 			} else {
-				await this.setBD("edittemp", oTempItem)
-				await this.setBD("edititem", oNewItem);
-				await this.restUpdateList()
-				oModel.setProperty("/new", {})
-				this.pDialog.then(function (oDialog) {
-					oDialog.close();
-				});
+				var oModel = this.getModel("Table");
+				var oTempItem = oModel.getProperty("/tempitem");
+				var oNewItem = oModel.getProperty("/new");
+				if (oNewItem.name1 === oTempItem.name1 && oNewItem.name2 === oTempItem.name2) {
+					oNewItem.oldmoney = oTempItem.money
+					await this.setBD("edititem", oNewItem);
+					await this.restUpdateList()
+					oModel.setProperty("/new", {})
+					this.pDialog.then(function (oDialog) {
+						oDialog.close();
+					});
+				} else {
+					MessageToast.show("Нельзя менять имена");
+				}
 			}
 		},
 
@@ -143,6 +170,24 @@ sap.ui.define([
 			oModel.setProperty("/tempitem", oClone)
 			oModel.setProperty("/new", oItem)
 			this.openFragment()
-		}
+		},
+
+		logout: function () {
+            fetch('http://127.0.0.1:5000/logout', {
+                method: 'POST',
+                body: JSON.stringify(),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then((response) => {
+                return response.json();
+            }).then((data) => {
+                if (data.status === 200) {
+                    
+                } else {
+                    this.oRouter.navTo("auth");
+                }
+            });
+        }
 	});
 });

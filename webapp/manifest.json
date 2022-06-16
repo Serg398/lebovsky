@@ -13,7 +13,6 @@
 		"applicationVersion": {
 			"version": "1.0.0"
 		},
-		
 		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
 		"resources": "resources.json",
@@ -67,7 +66,6 @@
 				}
 			}
 		},
-		
 		"resources": {
 			"css": [
 				{
@@ -82,11 +80,26 @@
 				"viewPath": "sap.ui.demo.basicTemplate.view",
 				"controlId": "app",
 				"controlAggregation": "pages",
-				"async": true
+				"async": true,
+				"transition": "flip"
 			},
 			"routes": [
 				{
 					"pattern": "",
+					"name": "auth",
+					"target": [
+						"auth"
+					]
+				},
+				{
+					"pattern": "register/:path:",
+					"name": "register",
+					"target": [
+						"register"
+					]
+				},
+				{
+					"pattern": "home/:path:",
 					"name": "home",
 					"target": [
 						"home"
@@ -99,6 +112,16 @@
 					"viewId": "home",
 					"viewLevel": 1,
 					"title": "{i18n>title}"
+				},
+				"register": {
+					"viewName": "Register",
+					"viewId": "register",
+					"viewLevel": 1
+				},
+				"auth": {
+					"viewName": "Auth",
+					"viewId": "auth",
+					"viewLevel": 1
 				}
 			}
 		}

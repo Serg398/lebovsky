@@ -39,3 +39,30 @@
     padding-left: 0.5rem;
 }
 
+.auth {
+    position: fixed; 
+    top: 20%;
+    left: 35%;
+    width: 600px;
+    height:400px;
+    justify-content: center;
+    align-items: center;
+}
+
+.authLabel{
+    font-size: 20px;
+    margin-left: 5%;
+    margin-bottom: 20%;
+}
+
+.regLabel {
+    font-size: 20px;
+    margin-left: 25%;
+    margin-bottom: 20%;
+}
+
+.sapUiGlobalBackgroundColor, .sapMShellGlobalInnerBackground {
+    /* background-color: #8cd7ff40; */
+}
+    
+

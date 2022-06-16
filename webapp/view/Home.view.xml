@@ -5,11 +5,10 @@
 	xmlns="sap.m"
 	xmlns:core="sap.ui.core"
 	displayBlock="true">
-	<App>
 		<Page
 			id="Main"
 			showHeader="false"
-			enableScrolling="false">
+			enableScrolling="true">
 			<IconTabBar id="idIconTabBarMulti">
 				<items>
 					<IconTabFilter
@@ -20,12 +19,16 @@
 							text="Новый чек"
 							press="openFragment"
 							class="sapUiSmallMarginBegin" />
+						<Button
+							text="Выход"
+							press="logout"
+							class="sapUiSmallMarginBegin" />
 						<List
 							class="sapUiSmallMarginTop"
 							delete="delItemList"
 							mode="Delete"
 							id="ShortProductList"
-							items="{Table>/front/event}">
+							items="{Table>/front/events}">
 							<CustomListItem
 								type="Active"
 								press="playItem">
@@ -105,7 +108,7 @@
 							<items>
 								<GenericTile
 									header="{Table>name}"
-									subheader="Баланс: {Table>total}"
+									subheader="Баланс: {Table>money}"
 									press="onTilePress">
 									<TileContent>
 										<ImageContent src="https://cdn-icons-png.flaticon.com/512/18/18221.png?w=826" />
@@ -117,5 +120,4 @@
 				</items>
 			</IconTabBar>
 		</Page>
-	</App>
 </mvc:View>
