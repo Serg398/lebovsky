@@ -9,22 +9,16 @@ sap.ui.define([
             var oModel = this.getModel("Table");
             oModel.setProperty("/auth", {})
             this.oRouter = this.getOwnerComponent().getRouter();
-            fetch('http://127.0.0.1:5000/login', {
-                method: 'POST',
-                body: JSON.stringify(),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }).then((response) => {
-                return response.json();
-            }).then((data) => {
-                if (data.status === 200) {
-                    this.oRouter.navTo("home");
-                } else {
-                    
-                }
-            });
+            this.oRouter.getRoute("auth").attachMatched(this._onRouteMatched, this);
+
         },
+        _onRouteMatched: function (oEvent) {
+			var oUrlArgs = oEvent.getParameter("arguments"),
+				bUpdate = oUrlArgs.update === "true";
+			if (bUpdate) {
+				this.getModel().refresh();
+			}
+		},
         getModel: function (sName) {
             return this.getView().getModel(sName) || this.getOwnerComponent().getModel(sName);
         },

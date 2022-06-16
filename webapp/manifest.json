@@ -81,11 +81,11 @@
 				"controlId": "app",
 				"controlAggregation": "pages",
 				"async": true,
-				"transition": "flip"
+				"transition": "fade"
 			},
 			"routes": [
 				{
-					"pattern": "",
+					"pattern": "auth/:path:",
 					"name": "auth",
 					"target": [
 						"auth"
@@ -99,7 +99,7 @@
 					]
 				},
 				{
-					"pattern": "home/:path:",
+					"pattern": "",
 					"name": "home",
 					"target": [
 						"home"

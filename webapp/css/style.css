@@ -20,7 +20,7 @@
 }
 
 .sapMDialog.sapMPopup-CTX>header .sapMHeader-CTX, .sapMDialog.sapMPopup-CTX>header .sapMSubHeader-CTX {
-    background-color: rgb(145, 204, 255);
+    background-color: #9db1c4;
 }
 
 .datePicker {
@@ -55,6 +55,16 @@
     margin-bottom: 20%;
 }
 
+.fragment{
+    font-size: 14px;
+    margin-top: 10%;
+    margin-left: 0.5rem;
+}
+
+.fragmentButton{
+    margin-top: 3%;
+}
+
 .regLabel {
     font-size: 20px;
     margin-left: 25%;
@@ -65,4 +75,10 @@
     /* background-color: #8cd7ff40; */
 }
     
+
+.sapMShellBrandingBar {
+    height: 0px;
+}
+
+
 

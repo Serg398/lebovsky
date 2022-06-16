@@ -3,20 +3,28 @@
     xmlns:core="sap.ui.core">
     <Dialog
         class="sapUiSizeCompact"
-        contentHeight="400px"
+        contentHeight="300px"
         contentWidth="800px"
         title="Новый чек">
         <HBox>
-            <Text text="Дата: " />
+            <Text
+                width="3rem"
+                text="Дата: "
+                class="fragment" />
             <DatePicker
+                width="12rem"
                 id="DP"
                 displayFormat="short"
-                class="sapUiSmallMarginBottom"
+                class="fragment"
                 value="{Table>/new/DP}" />
         </HBox>
         <HBox>
-            <Text text="От: " />
+            <Text
+                text="От: "
+                width="3rem"
+                class="fragment" />
             <Select
+                width="12rem"
                 forceSelection="false"
                 selectedKey="{Table>/new/name1}"
                 items="{Table>/front/users}">
@@ -24,46 +32,48 @@
                     key="{Table>name}"
                     text="{Table>name}" />
             </Select>
-            <Text text="кому: " />
+            <Text
+                text="Кому: "
+                width="3rem"
+                class="fragment" />
             <Select
                 forceSelection="false"
                 selectedKey="{Table>/new/name2}"
-                items="{Table>/front/users}">
+                items="{Table>/front/users}"
+                width="12rem">
                 <core:Item
                     key="{Table>name}"
                     text="{Table>name}" />
             </Select>
-            <Text text="Сумма: " />
+            <Text
+                text="Сумма: "
+                width="3rem"
+                class="fragment" />
             <Input
                 value="{path: 'Table>/new/money',
                         type: 'sap.ui.model.type.Integer'}"
                 placeholder="Введите сумму"
-                class="sapUiSmallMarginBottom" />
+                class="sapUiSmallMarginBegin" />
         </HBox>
-        <Text text="Комментарий:" />
+        <Text
+            text="Комментарий:"
+            width="6rem"
+            class="fragment" />
         <Input
             value="{Table>/new/comments}"
             placeholder="Комментарий"
-            class="sapUiSmallMarginBottom" />
-        <HBox>
+            class="fragment" />
+        <HBox class="fragmentButton">
             <Button
                 type="Accept"
-                text="ОК"
+                text="Отправить"
                 press="addEvent"
-                ariaDescribedBy="acceptButtonDescription genericButtonDescription">
-                <layoutData>
-                    <FlexItemData growFactor="1" />
-                </layoutData>
-            </Button>
+                class="sapUiSmallMarginBegin"></Button>
             <Button
                 type="Reject"
                 text="Отмена"
                 press="onCloseDialog"
-                ariaDescribedBy="acceptButtonDescription genericButtonDescription">
-                <layoutData>
-                    <FlexItemData growFactor="1" />
-                </layoutData>
-            </Button>
+                class="sapUiSmallMarginBegin"></Button>
         </HBox>
     </Dialog>
 </core:FragmentDefinition>

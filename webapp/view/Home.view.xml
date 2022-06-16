@@ -3,26 +3,113 @@
 	xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
+	xmlns:tnt="sap.tnt"
 	xmlns:core="sap.ui.core"
 	displayBlock="true">
-		<Page
-			id="Main"
-			showHeader="false"
-			enableScrolling="true">
-			<IconTabBar id="idIconTabBarMulti">
-				<items>
-					<IconTabFilter
+	<Page
+		id="Main"
+		showHeader="false"
+		enableScrolling="true">
+		<tnt:ToolPage id="toolPage">
+			<tnt:header>
+				<tnt:ToolHeader>
+					<Image
+						height="2.5rem"
+						class="sapUiSmallMarginBegin"
+						src="https://cdn.icon-icons.com/icons2/1091/PNG/512/profits_78367.png" />
+					<Title
+						level="H1"
+						text="Система учета финансов">
+						<layoutData>
+							<OverflowToolbarLayoutData shrinkable="true" />
+						</layoutData>
+					</Title>
+					<Title
+						level="H3"
+						titleStyle="H6"
+						text="">
+						<layoutData>
+							<OverflowToolbarLayoutData shrinkable="true" />
+						</layoutData>
+					</Title>
+					<ToolbarSpacer>
+						<layoutData>
+							<OverflowToolbarLayoutData
+								priority="NeverOverflow"
+								minWidth="20px" />
+						</layoutData>
+					</ToolbarSpacer>
+					<tnt:ToolHeaderUtilitySeparator />
+					<OverflowToolbarButton
+						text="Search"
+						tooltip="Search"
+						icon="sap-icon://search"
+						type="Transparent" />
+					<OverflowToolbarButton
+						text="Tasks"
+						tooltip="Tasks"
+						icon="sap-icon://circle-task"
+						type="Transparent" />
+					<OverflowToolbarButton
+						text="Notifications"
+						tooltip="Notifications"
+						icon="sap-icon://bell"
+						type="Transparent" />
+					<Avatar
+						press="pressAvatar"
+						src="test-resources/sap/tnt/images/John_Miller.png"
+						displaySize="XS">
+						<!-- <layoutData>
+							<OverflowToolbarLayoutData priority="NeverOverflow" />
+						</layoutData> -->
+					</Avatar>
+					<Link text="Выйти" press="logout"></Link>
+					<OverflowToolbarButton
+						text="Custom Action"
+						tooltip="Custom Action"
+						icon="sap-icon://grid"
+						type="Transparent" />
+				</tnt:ToolHeader>
+			</tnt:header>
+			<tnt:subHeader>
+				<tnt:ToolHeader>
+					<Button
 						text="События"
-						icon="sap-icon://hint"
-						key="info">
-						<Button
-							text="Новый чек"
-							press="openFragment"
-							class="sapUiSmallMarginBegin" />
-						<Button
-							text="Выход"
-							press="logout"
-							class="sapUiSmallMarginBegin" />
+						press="handleNav">
+						<layoutData>
+							<FlexItemData growFactor="1" />
+						</layoutData>
+						<customData>
+							<core:CustomData
+								key="target"
+								value="p1" />
+						</customData>
+					</Button>
+					<Button
+						text="Сводка"
+						press="handleNav">
+						<layoutData>
+							<FlexItemData growFactor="1" />
+						</layoutData>
+						<customData>
+							<core:CustomData
+								key="target"
+								value="p2" />
+						</customData>
+					</Button>
+					<Button
+						text="Новый чек"
+						press="openFragment"
+						class="sapUiSmallMarginBegin" />
+				</tnt:ToolHeader>
+			</tnt:subHeader>
+			<tnt:mainContents>
+				<NavContainer
+					id="navCon">
+					<Page
+						id="p1"
+						showHeader="false"
+						title="События">
 						<List
 							class="sapUiSmallMarginTop"
 							delete="delItemList"
@@ -70,7 +157,7 @@
 													class="sapUiSmallMarginBegin" />
 											</HBox>
 										</VBox>
-										
+
 									</HBox>
 									<HBox
 										width="20%"
@@ -90,14 +177,11 @@
 								</HBox>
 							</CustomListItem>
 						</List>
-					</IconTabFilter>
-					<IconTabFilter
-						text="Сводка"
-						icon="sap-icon://attachment"
-						key="attachments">
+					</Page>
+					<Page
+						id="p2"
+						title="Общая сводка">
 						<FlexBox
-							alignItems="Center"
-							alignContent="Center"
 							direction="Row"
 							renderType="Bare"
 							wrap="Wrap"
@@ -116,8 +200,121 @@
 								</GenericTile>
 							</items>
 						</FlexBox>
-					</IconTabFilter>
-				</items>
-			</IconTabBar>
-		</Page>
+					</Page>
+				</NavContainer>
+			</tnt:mainContents>
+		</tnt:ToolPage>
+
+
+		<!-- <IconTabBar id="idIconTabBarMulti">
+			<items>
+				<IconTabFilter
+					text="События"
+					icon="sap-icon://hint"
+					key="info">
+					<Button
+						text="Новый чек"
+						press="openFragment"
+						class="sapUiSmallMarginBegin" />
+					<Button
+						text="Выход"
+						press="logout"
+						class="sapUiSmallMarginBegin" />
+					<List
+						class="sapUiSmallMarginTop"
+						delete="delItemList"
+						mode="Delete"
+						id="ShortProductList"
+						items="{Table>/front/events}">
+						<CustomListItem
+							type="Active"
+							press="playItem">
+							<HBox>
+								<HBox
+									width="80%"
+									alignItems="Center"
+									alignContent="Center">
+									<Image
+										class="imgCahsItem"
+										src="https://cdn-icons-png.flaticon.com/512/1241/1241629.png?w=826"
+										width="50px" />
+									<Text
+										width="5rem"
+										text="Чек № {Table>id}" />
+									<Text
+										class="dp"
+										width="5rem"
+										text="{Table>DP}" />
+									<VBox>
+										<HBox>
+											<Text
+												width="3rem"
+												text="Кто: "
+												class="sapUiSmallMarginBegin" />
+											<Text
+												width="30rem"
+												text="{Table>name1}"
+												class="sapUiSmallMarginBegin" />
+										</HBox>
+										<HBox>
+											<Text
+												width="3rem"
+												text="Кому: "
+												class="sapUiSmallMarginBegin" />
+											<Text
+												width="30rem"
+												text="{Table>name2}"
+												class="sapUiSmallMarginBegin" />
+										</HBox>
+									</VBox>
+
+								</HBox>
+								<HBox
+									width="20%"
+									alignItems="Center"
+									alignContent="Center">
+									<Text
+										width="6.5rem"
+										text="Размер суммы: "
+										class="sapUiSmallMarginBegin" />
+									<Text
+										width="4rem"
+										text="{Table>money}" />
+									<Button
+										icon="sap-icon://comment"
+										press="comentPopoverPress" />
+								</HBox>
+							</HBox>
+						</CustomListItem>
+					</List>
+				</IconTabFilter>
+				<IconTabFilter
+					text="Сводка"
+					icon="sap-icon://attachment"
+					key="attachments">
+					<FlexBox
+						alignItems="Center"
+						alignContent="Center"
+						direction="Row"
+						renderType="Bare"
+						wrap="Wrap"
+						width="100%"
+						displayInline="true"
+						fitContainer="true"
+						items="{Table>/front/users}">
+						<items>
+							<GenericTile
+								header="{Table>name}"
+								subheader="Баланс: {Table>money}"
+								press="onTilePress">
+								<TileContent>
+									<ImageContent src="https://cdn-icons-png.flaticon.com/512/18/18221.png?w=826" />
+								</TileContent>
+							</GenericTile>
+						</items>
+					</FlexBox>
+				</IconTabFilter>
+			</items>
+		</IconTabBar> -->
+	</Page>
 </mvc:View>

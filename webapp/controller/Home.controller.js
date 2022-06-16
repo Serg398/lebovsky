@@ -11,10 +11,18 @@ sap.ui.define([
 			var oModel = this.getModel("Table");
 			oModel.setProperty("/new", {})
 			oModel.setProperty("/front", [])
-			this.oRouter = this.getOwnerComponent().getRouter();
+			this.oOwnerComponent = this.getOwnerComponent();
+			this.oRouter = this.oOwnerComponent.getRouter();
+			this.oRouter.attachRouteMatched(this.onRouteMatched, this);
+		},
+
+		onRouteMatched: function () {
+			var oModel = this.getModel("Table");
 			fetch('http://127.0.0.1:5000/', {
 				headers: {
-					'Content-Type': 'application/json'
+					'Access-Control-Allow-Credentials': 'true',
+					'Content-Type': 'application/json',
+					'Accept': 'application/json'
 				}
 			}).then((response) => {
 				return response.json();
@@ -23,13 +31,9 @@ sap.ui.define([
 				if (data.status === 204) {
 					this.oRouter.navTo("auth");
 				} else {
-					this.restUpdateList()
+					oModel.setProperty("/front", data)
 				}
-
 			});
-			// this.restUpdateList()
-			// this.oRouter.navTo("auth");
-
 		},
 
 		getModel: function (sName) {
@@ -44,6 +48,7 @@ sap.ui.define([
 			var oModel = this.getModel("Table");
 			fetch('http://127.0.0.1:5000/', {
 				headers: {
+					'Access-Control-Allow-Credentials': 'true',
 					'Content-Type': 'application/json'
 				}
 			}).then((response) => {
@@ -61,6 +66,7 @@ sap.ui.define([
 				method: 'POST',
 				body: JSON.stringify(parametr),
 				headers: {
+					'Access-Control-Allow-Credentials': 'true',
 					'Content-Type': 'application/json'
 				}
 			});
@@ -173,21 +179,34 @@ sap.ui.define([
 		},
 
 		logout: function () {
-            fetch('http://127.0.0.1:5000/logout', {
-                method: 'POST',
-                body: JSON.stringify(),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }).then((response) => {
-                return response.json();
-            }).then((data) => {
-                if (data.status === 200) {
-                    
-                } else {
-                    this.oRouter.navTo("auth");
-                }
-            });
-        }
+			fetch('http://127.0.0.1:5000/logout', {
+				method: 'POST',
+				body: JSON.stringify(),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			}).then((response) => {
+				return response.json();
+			}).then((data) => {
+				if (data.status === 200) {
+
+				} else {
+					this.oRouter.navTo("auth");
+					var oModel = this.getModel("Table");
+					oModel.setProperty("/front", {})
+					oModel.setProperty("/auth", {})
+				}
+			});
+		},
+
+		handleNav: function (evt) {
+			var navCon = this.byId("navCon");
+			var target = evt.getSource().data("target");
+			if (target) {
+				navCon.to(this.byId(target), "fade");
+			} else {
+				navCon.back();
+			}
+		}
 	});
 });
