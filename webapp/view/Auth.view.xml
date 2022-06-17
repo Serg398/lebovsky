@@ -12,7 +12,7 @@
         enableScrolling="false">
         <HBox class="auth">
             <VBox>
-                <Label  text="Авторизация в системе" class="authLabel"/>
+                <Label  text="Авторизация в системе" class="authLabel colorText"/>
                 <Input 
                     width="15rem"
                     type="Email"

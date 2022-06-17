@@ -12,11 +12,16 @@
         enableScrolling="false">
         <HBox class="auth">
             <VBox>
-                <Label text="Регистрация" class="regLabel"/>
+                <Label text="Регистрация" class="regLabel colorText"/>
                 <Input 
                     width="15rem"
                     value="{Table>/register/name}"
-                    placeholder="Имя и Фамилия"
+                    placeholder="Имя"
+                    class="sapUiSmallMarginBottom" />
+                <Input 
+                    width="15rem"
+                    value="{Table>/register/firstname}"
+                    placeholder="Фамилия"
                     class="sapUiSmallMarginBottom" />
                 <Input
                     value="{Table>/register/Email}"
@@ -29,6 +34,7 @@
                     placeholder="Пароль"
                     class="sapUiSmallMarginBottom" />
                 <Button
+                    width="15rem"
                     type="Accept"
                     text="Зарегистрироваться"
                     press="addUser"

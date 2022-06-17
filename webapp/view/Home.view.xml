@@ -10,9 +10,9 @@
 		id="Main"
 		showHeader="false"
 		enableScrolling="true">
-		<tnt:ToolPage id="toolPage">
-			<tnt:header>
-				<tnt:ToolHeader>
+		<tnt:ToolPage id="toolPage" class="toolHead">
+			<tnt:header >
+				<tnt:ToolHeader >
 					<Image
 						height="2.5rem"
 						class="sapUiSmallMarginBegin"
@@ -40,7 +40,7 @@
 						</layoutData>
 					</ToolbarSpacer>
 					<tnt:ToolHeaderUtilitySeparator />
-					<OverflowToolbarButton
+					<!-- <OverflowToolbarButton
 						text="Search"
 						tooltip="Search"
 						icon="sap-icon://search"
@@ -54,21 +54,25 @@
 						text="Notifications"
 						tooltip="Notifications"
 						icon="sap-icon://bell"
-						type="Transparent" />
+						type="Transparent" /> -->
+					<Title text="{Table>/front/account/0/name}" />
 					<Avatar
 						press="pressAvatar"
-						src="test-resources/sap/tnt/images/John_Miller.png"
+						src="https://img.icons8.com/color-glass/344/guest-male.png"
 						displaySize="XS">
 						<!-- <layoutData>
 							<OverflowToolbarLayoutData priority="NeverOverflow" />
 						</layoutData> -->
 					</Avatar>
-					<Link text="Выйти" press="logout"></Link>
-					<OverflowToolbarButton
+					<Link
+						text="Выйти"
+						press="logout"></Link>
+					<!-- <OverflowToolbarButton
 						text="Custom Action"
 						tooltip="Custom Action"
 						icon="sap-icon://grid"
-						type="Transparent" />
+						type="Transparent" /> -->
+
 				</tnt:ToolHeader>
 			</tnt:header>
 			<tnt:subHeader>
@@ -104,8 +108,7 @@
 				</tnt:ToolHeader>
 			</tnt:subHeader>
 			<tnt:mainContents>
-				<NavContainer
-					id="navCon">
+				<NavContainer id="navCon">
 					<Page
 						id="p1"
 						showHeader="false"
@@ -126,13 +129,14 @@
 										alignContent="Center">
 										<Image
 											class="imgCahsItem"
-											src="https://cdn-icons-png.flaticon.com/512/1241/1241629.png?w=826"
+											src="https://img.icons8.com/nolan/344/check-dollar.png"
 											width="50px" />
-										<Text
+										<Text 
+											class="colorText"
 											width="5rem"
 											text="Чек № {Table>id}" />
 										<Text
-											class="dp"
+											class="dp colorText"
 											width="5rem"
 											text="{Table>DP}" />
 										<VBox>
@@ -140,21 +144,21 @@
 												<Text
 													width="3rem"
 													text="Кто: "
-													class="sapUiSmallMarginBegin" />
+													class="sapUiSmallMarginBegin colorText" />
 												<Text
 													width="30rem"
 													text="{Table>name1}"
-													class="sapUiSmallMarginBegin" />
+													class="sapUiSmallMarginBegin colorText" />
 											</HBox>
 											<HBox>
 												<Text
 													width="3rem"
 													text="Кому: "
-													class="sapUiSmallMarginBegin" />
+													class="sapUiSmallMarginBegin colorText" />
 												<Text
 													width="30rem"
 													text="{Table>name2}"
-													class="sapUiSmallMarginBegin" />
+													class="sapUiSmallMarginBegin colorText" />
 											</HBox>
 										</VBox>
 
@@ -166,12 +170,14 @@
 										<Text
 											width="6.5rem"
 											text="Размер суммы: "
-											class="sapUiSmallMarginBegin" />
+											class="sapUiSmallMarginBegin colorText" />
 										<Text
+											class=" colorText"
 											width="4rem"
 											text="{Table>money}" />
-										<Button
-											icon="sap-icon://comment"
+										<Image
+											width="30px"
+											src="https://img.icons8.com/color/344/comments--v1.png"
 											press="comentPopoverPress" />
 									</HBox>
 								</HBox>
@@ -180,6 +186,7 @@
 					</Page>
 					<Page
 						id="p2"
+						showHeader="false"
 						title="Общая сводка">
 						<FlexBox
 							direction="Row"
@@ -189,7 +196,7 @@
 							displayInline="true"
 							fitContainer="true"
 							items="{Table>/front/users}">
-							<items>
+							<items class="tail">
 								<GenericTile
 									header="{Table>name}"
 									subheader="Баланс: {Table>money}"

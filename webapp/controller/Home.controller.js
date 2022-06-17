@@ -18,7 +18,8 @@ sap.ui.define([
 
 		onRouteMatched: function () {
 			var oModel = this.getModel("Table");
-			fetch('http://127.0.0.1:5000/', {
+			fetch('http://127.0.0.1:5000/index', {
+				credentials: 'include',
 				headers: {
 					'Access-Control-Allow-Credentials': 'true',
 					'Content-Type': 'application/json',
@@ -46,7 +47,8 @@ sap.ui.define([
 
 		restUpdateList: function () {
 			var oModel = this.getModel("Table");
-			fetch('http://127.0.0.1:5000/', {
+			fetch('http://127.0.0.1:5000/index', {
+				credentials: 'include',
 				headers: {
 					'Access-Control-Allow-Credentials': 'true',
 					'Content-Type': 'application/json'
@@ -63,6 +65,7 @@ sap.ui.define([
 		setBD: async function (link, parametr) {
 
 			let response = await fetch('http://127.0.0.1:5000/' + link, {
+				credentials: 'include',
 				method: 'POST',
 				body: JSON.stringify(parametr),
 				headers: {
@@ -124,8 +127,8 @@ sap.ui.define([
 				oNewItem.id = sID
 				if (oNewItem.DP === undefined ||
 					oNewItem.money === undefined ||
-					oNewItem.name1 === undefined ||
-					oNewItem.name2 === undefined) {
+					oNewItem.Email1 === undefined ||
+					oNewItem.Email2 === undefined) {
 					MessageToast.show("Заполните все поля");
 				} else {
 					this.setBD("additem", oNewItem)

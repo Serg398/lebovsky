@@ -10,7 +10,7 @@
             <Text
                 width="3rem"
                 text="Дата: "
-                class="fragment" />
+                class="fragment colorText" />
             <DatePicker
                 width="12rem"
                 id="DP"
@@ -22,33 +22,33 @@
             <Text
                 text="От: "
                 width="3rem"
-                class="fragment" />
+                class="fragment colorText" />
             <Select
                 width="12rem"
                 forceSelection="false"
-                selectedKey="{Table>/new/name1}"
+                selectedKey="{Table>/new/Email1}"
                 items="{Table>/front/users}">
                 <core:Item
-                    key="{Table>name}"
-                    text="{Table>name}" />
+                    key="{Table>Email}"
+                    text="{Table>name} {Table>firstname}" />
             </Select>
             <Text
                 text="Кому: "
                 width="3rem"
-                class="fragment" />
+                class="fragment colorText" />
             <Select
                 forceSelection="false"
-                selectedKey="{Table>/new/name2}"
+                selectedKey="{Table>/new/Email2}"
                 items="{Table>/front/users}"
                 width="12rem">
                 <core:Item
-                    key="{Table>name}"
-                    text="{Table>name}" />
+                    key="{Table>Email}"
+                    text="{Table>name} {Table>firstname}" />
             </Select>
             <Text
                 text="Сумма: "
                 width="3rem"
-                class="fragment" />
+                class="fragment colorText" />
             <Input
                 value="{path: 'Table>/new/money',
                         type: 'sap.ui.model.type.Integer'}"
@@ -58,7 +58,7 @@
         <Text
             text="Комментарий:"
             width="6rem"
-            class="fragment" />
+            class="fragment colorText" />
         <Input
             value="{Table>/new/comments}"
             placeholder="Комментарий"
