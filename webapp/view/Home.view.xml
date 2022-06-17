@@ -55,7 +55,9 @@
 						tooltip="Notifications"
 						icon="sap-icon://bell"
 						type="Transparent" /> -->
+					<Title text="Баланс: {Table>/front/account/0/money}" />
 					<Title text="{Table>/front/account/0/name}" />
+					
 					<Avatar
 						press="pressAvatar"
 						src="https://img.icons8.com/color-glass/344/guest-male.png"
