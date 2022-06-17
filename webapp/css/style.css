@@ -173,3 +173,18 @@
 .sapMBtn:hover>.sapMBtnHoverable.sapMBtnReject:not(.sapMBtnActive):not(.sapMToggleBtnPressed) bdi {
     color: #ffffff;
 }
+
+.sapMPopover .sapMIBar.sapMHeader-CTX {
+    background-color: #25202e;
+    box-shadow: inset 0 -1px rgb(255, 255, 255);
+}
+
+.sapMIBar-CTX .sapMTitle {
+    color: #fff;
+    text-shadow: 0 0 0.125rem #ffffff;
+}
+
+.sapMPopover .sapMPopoverCont {
+    background-color: #d4d4d4;
+    margin: 0;
+}

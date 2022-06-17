@@ -107,6 +107,7 @@ sap.ui.define([
 				title: "Комментарий",
 				placement: "Bottom",
 				contentWidth: "200px",
+				contentHeight: "150px",
 				content: [new sap.m.Text({ text: oItem.comments })]
 			})
 			pop.addEventDelegate({
