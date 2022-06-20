@@ -55,7 +55,7 @@
 						tooltip="Notifications"
 						icon="sap-icon://bell"
 						type="Transparent" /> -->
-					<Title text="Баланс: {Table>/front/account/0/money}" />
+					<Title text="Баланс: {Table>/front/account/0/money} руб." class="balance"/>
 					<Title text="{Table>/front/account/0/name}" />
 					
 					<Avatar
@@ -126,7 +126,7 @@
 								press="playItem">
 								<HBox>
 									<HBox
-										width="80%"
+										width="75%"
 										alignItems="Center"
 										alignContent="Center">
 										<Image
@@ -148,7 +148,7 @@
 													text="Кто: "
 													class="sapUiSmallMarginBegin colorText" />
 												<Text
-													width="30rem"
+													width="25rem"
 													text="{Table>name1}"
 													class="sapUiSmallMarginBegin colorText" />
 											</HBox>
@@ -158,7 +158,7 @@
 													text="Кому: "
 													class="sapUiSmallMarginBegin colorText" />
 												<Text
-													width="30rem"
+													width="25rem"
 													text="{Table>name2}"
 													class="sapUiSmallMarginBegin colorText" />
 											</HBox>
@@ -174,9 +174,9 @@
 											text="Размер суммы: "
 											class="sapUiSmallMarginBegin colorText" />
 										<Text
-											class=" colorText"
-											width="4rem"
-											text="{Table>money}" />
+											class="balance"
+											width="8rem"
+											text="{Table>money} руб." />
 										<Image
 											width="30px"
 											src="https://img.icons8.com/color/344/comments--v1.png"
