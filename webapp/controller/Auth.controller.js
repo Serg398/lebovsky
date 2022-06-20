@@ -36,7 +36,7 @@ sap.ui.define([
             var oModel = this.getModel("Table");
             var oAuth = oModel.getProperty("/auth")
             if (oAuth.Email != undefined || oAuth.pass != undefined) {
-                fetch('http://62.3.58.53:5000/login', {
+                fetch('http://62.3.58.53:5000/api/login', {
                     credentials: 'include',
                     method: 'POST',
                     body: JSON.stringify(oAuth),
