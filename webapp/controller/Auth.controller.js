@@ -36,7 +36,7 @@ sap.ui.define([
             var oModel = this.getModel("Table");
             var oAuth = oModel.getProperty("/auth")
             if (oAuth.Email != undefined || oAuth.pass != undefined) {
-                fetch('http://127.0.0.1:5000/login', {
+                fetch('http://62.3.58.53:5000/login', {
                     mode: 'cors',
                     credentials: 'include',
                     method: 'POST',
