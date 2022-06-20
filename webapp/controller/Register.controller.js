@@ -21,7 +21,7 @@ sap.ui.define([
 		addUser: async function () {
 			var oModel = this.getModel("Table");
 			var oRegister = oModel.getProperty("/register")
-			let response = await fetch('http://127.0.0.1:5000/register', {
+			let response = await fetch('http://62.3.58.53:5000/register', {
 				credentials: 'include',
 				method: 'POST',
 				body: JSON.stringify(oRegister),
