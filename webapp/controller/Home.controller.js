@@ -18,9 +18,10 @@ sap.ui.define([
 
 		onRouteMatched: function () {
 			var oModel = this.getModel("Table");
-			fetch('http://62.3.58.53:5000/index', {
+			fetch('http://127.0.0.1:5000/index', {
 				credentials: 'include',
 				headers: {
+					'Access-Control-Allow-Origin': '*',
 					'Access-Control-Allow-Credentials': 'true',
 					'Content-Type': 'application/json',
 					'Accept': 'application/json'
@@ -47,7 +48,7 @@ sap.ui.define([
 
 		restUpdateList: function () {
 			var oModel = this.getModel("Table");
-			fetch('http://62.3.58.53:5000/index', {
+			fetch('http://127.0.0.1:5000/index', {
 				credentials: 'include',
 				headers: {
 					'Access-Control-Allow-Credentials': 'true',
@@ -64,7 +65,7 @@ sap.ui.define([
 
 		setBD: async function (link, parametr) {
 
-			let response = await fetch('http://62.3.58.53:5000/' + link, {
+			let response = await fetch('http://127.0.0.1:5000/' + link, {
 				credentials: 'include',
 				method: 'POST',
 				body: JSON.stringify(parametr),
@@ -183,7 +184,8 @@ sap.ui.define([
 		},
 
 		logout: function () {
-			fetch('http://62.3.58.53:5000/logout', {
+			fetch('http://127.0.0.1:5000/logout', {
+				credentials: 'include',
 				method: 'POST',
 				body: JSON.stringify(),
 				headers: {
