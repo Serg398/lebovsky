@@ -10,16 +10,10 @@ sap.ui.define([
             var oModel = this.getModel("Table");
             oModel.setProperty("/auth", {})
             this.oRouter = this.getOwnerComponent().getRouter();
-            this.oRouter.getRoute("auth").attachMatched(this._onRouteMatched, this);
-
         },
         _onRouteMatched: function (oEvent) {
-            var oUrlArgs = oEvent.getParameter("arguments"),
-                bUpdate = oUrlArgs.update === "true";
-            if (bUpdate) {
-                this.getModel().refresh();
-            }
         },
+
         getModel: function (sName) {
             return this.getView().getModel(sName) || this.getOwnerComponent().getModel(sName);
         },
@@ -36,7 +30,7 @@ sap.ui.define([
             var oModel = this.getModel("Table");
             var oAuth = oModel.getProperty("/auth")
             if (oAuth.Email != undefined || oAuth.pass != undefined) {
-                fetch('http://62.3.58.53:5000/api/login', {
+                fetch('http://127.0.0.1:5000/api/login', {
                     credentials: 'include',
                     method: 'POST',
                     body: JSON.stringify(oAuth),

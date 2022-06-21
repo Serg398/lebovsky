@@ -11,14 +11,8 @@ sap.ui.define([
 			var oModel = this.getModel("Table");
 			oModel.setProperty("/new", {})
 			oModel.setProperty("/front", [])
-			this.oOwnerComponent = this.getOwnerComponent();
-			this.oRouter = this.oOwnerComponent.getRouter();
-			this.oRouter.attachRouteMatched(this.onRouteMatched, this);
-		},
-
-		onRouteMatched: function () {
-			var oModel = this.getModel("Table");
-			fetch('http://62.3.58.53:5000/api/index', {
+			this.oRouter = this.getOwnerComponent().getRouter();
+			fetch('http://127.0.0.1:5000/api/index', {
 				credentials: 'include',
 				headers: {
 					'Access-Control-Allow-Origin': '*',
@@ -33,9 +27,10 @@ sap.ui.define([
 				if (data.status === 204) {
 					this.oRouter.navTo("auth");
 				} else {
-					oModel.setProperty("/api/front", data)
+					oModel.setProperty("/front", data)
 				}
 			});
+
 		},
 
 		getModel: function (sName) {
@@ -48,7 +43,7 @@ sap.ui.define([
 
 		restUpdateList: function () {
 			var oModel = this.getModel("Table");
-			fetch('http://62.3.58.53:5000/api/index', {
+			fetch('http://127.0.0.1:5000/api/index', {
 				credentials: 'include',
 				headers: {
 					'Access-Control-Allow-Credentials': 'true',
@@ -65,7 +60,7 @@ sap.ui.define([
 
 		setBD: async function (link, parametr) {
 
-			let response = await fetch('http://62.3.58.53:5000/api/' + link, {
+			let response = await fetch('http://127.0.0.1:5000/api/' + link, {
 				credentials: 'include',
 				method: 'POST',
 				body: JSON.stringify(parametr),
@@ -184,7 +179,7 @@ sap.ui.define([
 		},
 
 		logout: function () {
-			fetch('http://62.3.58.53:5000/api/logout', {
+			fetch('http://127.0.0.1:5000/api/logout', {
 				credentials: 'include',
 				method: 'POST',
 				body: JSON.stringify(),
