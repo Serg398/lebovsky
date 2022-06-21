@@ -30,7 +30,7 @@ sap.ui.define([
             var oModel = this.getModel("Table");
             var oAuth = oModel.getProperty("/auth")
             if (oAuth.Email != undefined || oAuth.pass != undefined) {
-                fetch('http://127.0.0.1:5000/api/login', {
+                fetch('http://62.3.58.53:5000/api/login', {
                     credentials: 'include',
                     method: 'POST',
                     body: JSON.stringify(oAuth),
@@ -43,7 +43,26 @@ sap.ui.define([
                     if (data.status === 204) {
                         alert(data.text)
                     } else {
-                        this.oRouter.navTo("home");
+                        fetch('http://62.3.58.53:5000/api/index', {
+                            credentials: 'include',
+                            headers: {
+                                'Access-Control-Allow-Origin': '*',
+                                'Access-Control-Allow-Credentials': 'true',
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            }
+                        }).then((response) => {
+                            return response.json();
+                        }).then((data) => {
+                            console.log(data);
+                            if (data.status === 204) {
+                                MessageToast.show("Не могу получить данные")
+                                this.oRouter.navTo("auth");
+                            } else {
+                                this.oRouter.navTo("home");
+                                oModel.setProperty("/front", data)
+                            }
+                        });
                     }
                 });
             } else {

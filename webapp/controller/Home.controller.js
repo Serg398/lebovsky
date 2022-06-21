@@ -12,7 +12,7 @@ sap.ui.define([
 			oModel.setProperty("/new", {})
 			oModel.setProperty("/front", [])
 			this.oRouter = this.getOwnerComponent().getRouter();
-			fetch('http://127.0.0.1:5000/api/index', {
+			fetch('http://62.3.58.53:5000/api/index', {
 				credentials: 'include',
 				headers: {
 					'Access-Control-Allow-Origin': '*',
@@ -30,7 +30,6 @@ sap.ui.define([
 					oModel.setProperty("/front", data)
 				}
 			});
-
 		},
 
 		getModel: function (sName) {
@@ -43,7 +42,7 @@ sap.ui.define([
 
 		restUpdateList: function () {
 			var oModel = this.getModel("Table");
-			fetch('http://127.0.0.1:5000/api/index', {
+			fetch('http://62.3.58.53:5000/api/index', {
 				credentials: 'include',
 				headers: {
 					'Access-Control-Allow-Credentials': 'true',
@@ -59,8 +58,7 @@ sap.ui.define([
 		},
 
 		setBD: async function (link, parametr) {
-
-			let response = await fetch('http://127.0.0.1:5000/api/' + link, {
+			let response = await fetch('http://62.3.58.53:5000/api/' + link, {
 				credentials: 'include',
 				method: 'POST',
 				body: JSON.stringify(parametr),
@@ -179,7 +177,7 @@ sap.ui.define([
 		},
 
 		logout: function () {
-			fetch('http://127.0.0.1:5000/api/logout', {
+			fetch('http://62.3.58.53:5000/api/logout', {
 				credentials: 'include',
 				method: 'POST',
 				body: JSON.stringify(),

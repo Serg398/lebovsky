@@ -10,9 +10,11 @@
 		id="Main"
 		showHeader="false"
 		enableScrolling="true">
-		<tnt:ToolPage id="toolPage" class="toolHead">
-			<tnt:header >
-				<tnt:ToolHeader >
+		<tnt:ToolPage
+			id="toolPage"
+			class="toolHead">
+			<tnt:header>
+				<tnt:ToolHeader>
 					<Image
 						height="2.5rem"
 						class="sapUiSmallMarginBegin"
@@ -55,9 +57,11 @@
 						tooltip="Notifications"
 						icon="sap-icon://bell"
 						type="Transparent" /> -->
-					<Title text="Баланс: {Table>/front/account/0/money} руб." class="balance"/>
+					<Title
+						text="Баланс: {Table>/front/account/0/money} руб."
+						class="balance" />
 					<Title text="{Table>/front/account/0/name}" />
-					
+
 					<Avatar
 						press="pressAvatar"
 						src="https://img.icons8.com/color-glass/344/guest-male.png"
@@ -133,7 +137,7 @@
 											class="imgCahsItem"
 											src="https://img.icons8.com/nolan/344/check-dollar.png"
 											width="50px" />
-										<Text 
+										<Text
 											class="colorText"
 											width="5rem"
 											text="Чек № {Table>id}" />
@@ -163,7 +167,6 @@
 													class="sapUiSmallMarginBegin colorText" />
 											</HBox>
 										</VBox>
-
 									</HBox>
 									<HBox
 										width="20%"
@@ -213,117 +216,5 @@
 				</NavContainer>
 			</tnt:mainContents>
 		</tnt:ToolPage>
-
-
-		<!-- <IconTabBar id="idIconTabBarMulti">
-			<items>
-				<IconTabFilter
-					text="События"
-					icon="sap-icon://hint"
-					key="info">
-					<Button
-						text="Новый чек"
-						press="openFragment"
-						class="sapUiSmallMarginBegin" />
-					<Button
-						text="Выход"
-						press="logout"
-						class="sapUiSmallMarginBegin" />
-					<List
-						class="sapUiSmallMarginTop"
-						delete="delItemList"
-						mode="Delete"
-						id="ShortProductList"
-						items="{Table>/front/events}">
-						<CustomListItem
-							type="Active"
-							press="playItem">
-							<HBox>
-								<HBox
-									width="80%"
-									alignItems="Center"
-									alignContent="Center">
-									<Image
-										class="imgCahsItem"
-										src="https://cdn-icons-png.flaticon.com/512/1241/1241629.png?w=826"
-										width="50px" />
-									<Text
-										width="5rem"
-										text="Чек № {Table>id}" />
-									<Text
-										class="dp"
-										width="5rem"
-										text="{Table>DP}" />
-									<VBox>
-										<HBox>
-											<Text
-												width="3rem"
-												text="Кто: "
-												class="sapUiSmallMarginBegin" />
-											<Text
-												width="30rem"
-												text="{Table>name1}"
-												class="sapUiSmallMarginBegin" />
-										</HBox>
-										<HBox>
-											<Text
-												width="3rem"
-												text="Кому: "
-												class="sapUiSmallMarginBegin" />
-											<Text
-												width="30rem"
-												text="{Table>name2}"
-												class="sapUiSmallMarginBegin" />
-										</HBox>
-									</VBox>
-
-								</HBox>
-								<HBox
-									width="20%"
-									alignItems="Center"
-									alignContent="Center">
-									<Text
-										width="6.5rem"
-										text="Размер суммы: "
-										class="sapUiSmallMarginBegin" />
-									<Text
-										width="4rem"
-										text="{Table>money}" />
-									<Button
-										icon="sap-icon://comment"
-										press="comentPopoverPress" />
-								</HBox>
-							</HBox>
-						</CustomListItem>
-					</List>
-				</IconTabFilter>
-				<IconTabFilter
-					text="Сводка"
-					icon="sap-icon://attachment"
-					key="attachments">
-					<FlexBox
-						alignItems="Center"
-						alignContent="Center"
-						direction="Row"
-						renderType="Bare"
-						wrap="Wrap"
-						width="100%"
-						displayInline="true"
-						fitContainer="true"
-						items="{Table>/front/users}">
-						<items>
-							<GenericTile
-								header="{Table>name}"
-								subheader="Баланс: {Table>money}"
-								press="onTilePress">
-								<TileContent>
-									<ImageContent src="https://cdn-icons-png.flaticon.com/512/18/18221.png?w=826" />
-								</TileContent>
-							</GenericTile>
-						</items>
-					</FlexBox>
-				</IconTabFilter>
-			</items>
-		</IconTabBar> -->
 	</Page>
 </mvc:View>
