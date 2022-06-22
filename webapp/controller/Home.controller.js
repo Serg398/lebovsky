@@ -15,7 +15,7 @@ sap.ui.define([
 			fetch('http://62.3.58.53:5000/api/index', {
 				credentials: 'include',
 				headers: {
-					'Access-Control-Allow-Origin': '*',
+					'Access-Control-Allow-Origin': 'http://62.3.58.53:5000',
 					'Access-Control-Allow-Credentials': 'true',
 					'Content-Type': 'application/json',
 					'Accept': 'application/json'
@@ -45,6 +45,7 @@ sap.ui.define([
 			fetch('http://62.3.58.53:5000/api/index', {
 				credentials: 'include',
 				headers: {
+					'Access-Control-Allow-Origin': 'http://62.3.58.53:5000',
 					'Access-Control-Allow-Credentials': 'true',
 					'Content-Type': 'application/json'
 				}
@@ -63,6 +64,7 @@ sap.ui.define([
 				method: 'POST',
 				body: JSON.stringify(parametr),
 				headers: {
+					'Access-Control-Allow-Origin': 'http://62.3.58.53:5000',
 					'Access-Control-Allow-Credentials': 'true',
 					'Content-Type': 'application/json'
 				}

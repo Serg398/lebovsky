@@ -43,10 +43,10 @@ sap.ui.define([
                     if (data.status === 204) {
                         alert(data.text)
                     } else {
-                        fetch('http://62.3.58.53:5000/api/index', {
+                        fetch('http://127.0.0.1:5000/api/index', {
                             credentials: 'include',
                             headers: {
-                                'Access-Control-Allow-Origin': '*',
+                                'Access-Control-Allow-Origin': 'http://62.3.58.53:5000',
                                 'Access-Control-Allow-Credentials': 'true',
                                 'Content-Type': 'application/json',
                                 'Accept': 'application/json'
