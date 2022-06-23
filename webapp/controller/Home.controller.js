@@ -11,11 +11,12 @@ sap.ui.define([
 			var oModel = this.getModel("Table");
 			oModel.setProperty("/new", {})
 			oModel.setProperty("/front", [])
+			var sHost = oModel.getProperty('/host')
 			this.oRouter = this.getOwnerComponent().getRouter();
-			fetch('http://lebovsky.site:5000/api/index', {
+			fetch(sHost +':5000/api/index', {
 				credentials: 'include',
 				headers: {
-					'Access-Control-Allow-Origin': 'http://lebovsky.site',
+					'Access-Control-Allow-Origin': sHost,
 					'Content-Type': 'application/json'
 				}
 			}).then((response) => {
@@ -40,10 +41,11 @@ sap.ui.define([
 
 		restUpdateList: function () {
 			var oModel = this.getModel("Table");
-			fetch('http://lebovsky.site:5000/api/index', {
+			var sHost = oModel.getProperty('/host')
+			fetch(sHost+':5000/api/index', {
 				credentials: 'include',
 				headers: {
-					'Access-Control-Allow-Origin': 'http://lebovsky.site',
+					'Access-Control-Allow-Origin': sHost,
 					'Content-Type': 'application/json'
 					
 				}
@@ -57,12 +59,14 @@ sap.ui.define([
 		},
 
 		setBD: async function (link, parametr) {
-			let response = await fetch('http://lebovsky.site:5000/api/' + link, {
+			var oModel = this.getModel("Table");
+			var sHost = oModel.getProperty('/host')
+			let response = await fetch(sHost+':5000/api/' + link, {
 				credentials: 'include',
 				method: 'POST',
 				body: JSON.stringify(parametr),
 				headers: {
-					'Access-Control-Allow-Origin': 'http://lebovsky.site',
+					'Access-Control-Allow-Origin': sHost,
 					'Content-Type': 'application/json'
 				}
 			});
@@ -176,12 +180,14 @@ sap.ui.define([
 		},
 
 		logout: function () {
-			fetch('http://lebovsky.site:5000/api/logout', {
+			var oModel = this.getModel("Table");
+			var sHost = oModel.getProperty('/host')
+			fetch(sHost+':5000/api/logout', {
 				credentials: 'include',
 				method: 'POST',
 				body: JSON.stringify(),
 				headers: {
-					'Access-Control-Allow-Origin': 'http://lebovsky.site',
+					'Access-Control-Allow-Origin': sHost,
 					'Content-Type': 'application/json'
 				}
 			}).then((response) => {

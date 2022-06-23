@@ -2,8 +2,6 @@
     background-color: rgb(145, 204, 255);
 }
 
-
-
 .imgCahsItem {
     padding: 0.5rem;
     margin-top: 0.3rem;
@@ -14,7 +12,6 @@
     margin-left: 0.5rem;
     margin-right: 0.5rem;
     margin-top: 0.3rem;
-    
 }
 
 .sapMDialog.sapMPopup-CTX>header .sapMHeader-CTX, .sapMDialog.sapMPopup-CTX>header .sapMSubHeader-CTX {
@@ -28,8 +25,6 @@
 .money {
     padding-left: 5rem;
 }
-
-
 
 .dp {
     padding-left: 0.5rem;
@@ -62,12 +57,7 @@
     font-size: 20px;
     margin-left: 25%;
     margin-bottom: 20%;
-}
-
-.sapUiGlobalBackgroundColor, .sapMShellGlobalInnerBackground {
-    /* background-color: #8cd7ff40; */
-}
-    
+}  
 
 .sapMShellBrandingBar {
     height: 0px;

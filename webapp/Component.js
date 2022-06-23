@@ -35,6 +35,10 @@ sap.ui.define([
 			var oAll = {all: []};
 			var oModelAll = new JSONModel(oAll);
 			this.setModel(oModelAll, "All");
+
+			var sUrl = window.location.hostname === "lebovsky.site" ? "lebovsky.site" : "http://127.0.0.1"
+			oModel.setProperty("/host", sUrl)
+			
 		}
 	});
 });

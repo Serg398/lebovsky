@@ -29,13 +29,14 @@ sap.ui.define([
         singIn: function () {
             var oModel = this.getModel("Table");
             var oAuth = oModel.getProperty("/auth")
+			var sHost = oModel.getProperty('/host')
             if (oAuth.Email != undefined || oAuth.pass != undefined) {
-                fetch('http://lebovsky.site:5000/api/login', {
+                fetch(sHost+':5000/api/login', {
                     credentials: 'include',
                     method: 'POST',
                     body: JSON.stringify(oAuth),
                     headers: {
-                        'Access-Control-Allow-Origin': 'http://lebovsky.site',
+                        'Access-Control-Allow-Origin': sHost,
                         'Content-Type': 'application/json'
                     }
                 }).then((response) => {
@@ -44,10 +45,10 @@ sap.ui.define([
                     if (data.status === 204) {
                         alert(data.text)
                     } else {
-                        fetch('http://lebovsky.site:5000/api/index', {
+                        fetch(sHost+':5000/api/index', {
                             credentials: 'include',
                             headers: {
-                                'Access-Control-Allow-Origin': 'http://lebovsky.site',
+                                'Access-Control-Allow-Origin': sHost,
                                 'Content-Type': 'application/json'
                             }
                         }).then((response) => {

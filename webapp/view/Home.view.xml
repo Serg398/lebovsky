@@ -153,7 +153,7 @@
 													class="sapUiSmallMarginBegin colorText" />
 												<Text
 													width="25rem"
-													text="{Table>name1}"
+													text="{Table>name}"
 													class="sapUiSmallMarginBegin colorText" />
 											</HBox>
 											<HBox>
@@ -163,7 +163,7 @@
 													class="sapUiSmallMarginBegin colorText" />
 												<Text
 													width="25rem"
-													text="{Table>name2}"
+													text="{Table>firstname}"
 													class="sapUiSmallMarginBegin colorText" />
 											</HBox>
 										</VBox>
