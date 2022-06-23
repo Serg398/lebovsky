@@ -38,7 +38,6 @@ sap.ui.define([
                         "Access-Control-Allow-Headers": "Content-Type",
                         "Access-Control-Allow-Origin": "http://lebovsky.site",
                         "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-                        'Access-Control-Allow-Credentials': 'true',
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
                     }
@@ -54,7 +53,6 @@ sap.ui.define([
                                 "Access-Control-Allow-Headers": "Content-Type",
                                 "Access-Control-Allow-Origin": "http://lebovsky.site",
                                 "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-                                'Access-Control-Allow-Credentials': 'true',
                                 'Content-Type': 'application/json',
                                 'Accept': 'application/json'
                             }
