@@ -32,6 +32,7 @@ sap.ui.define([
             if (oAuth.Email != undefined || oAuth.pass != undefined) {
                 fetch('http://lebovsky.site:5000/api/login', {
                     credentials: 'include',
+                    mode: "no-cors",
                     method: 'POST',
                     body: JSON.stringify(oAuth),
                     headers: {
@@ -46,6 +47,7 @@ sap.ui.define([
                     } else {
                         fetch('http://lebovsky.site:5000/api/index', {
                             credentials: 'include',
+                            mode: "no-cors",
                             headers: {
                                 'Access-Control-Allow-Origin': 'http://lebovsky.site',
                                 'Content-Type': 'application/json'

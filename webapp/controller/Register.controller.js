@@ -21,16 +21,13 @@ sap.ui.define([
 		addUser: async function () {
 			var oModel = this.getModel("Table");
 			var oRegister = oModel.getProperty("/register")
-			let response = await fetch('http://127.0.0.1:5000/api/register', {
+			let response = await fetch('http://lebovsky.site:5000/api/register', {
 				credentials: 'include',
 				method: 'POST',
 				body: JSON.stringify(oRegister),
 				headers: {
-					
-					"Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-					'Access-Control-Allow-Credentials': 'true',
-					'Content-Type': 'application/json',
-					'Accept': 'application/json'
+					'Access-Control-Allow-Origin': 'http://lebovsky.site',
+					'Content-Type': 'application/json'
 				}
 			});
 			if (response.status === 200) {

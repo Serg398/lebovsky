@@ -14,6 +14,7 @@ sap.ui.define([
 			this.oRouter = this.getOwnerComponent().getRouter();
 			fetch('http://lebovsky.site:5000/api/index', {
 				credentials: 'include',
+				mode: "no-cors",
 				headers: {
 					'Access-Control-Allow-Origin': 'http://lebovsky.site',
 					'Content-Type': 'application/json'
@@ -42,6 +43,7 @@ sap.ui.define([
 			var oModel = this.getModel("Table");
 			fetch('http://lebovsky.site:5000/api/index', {
 				credentials: 'include',
+				mode: "no-cors",
 				headers: {
 					'Access-Control-Allow-Origin': 'http://lebovsky.site',
 					'Content-Type': 'application/json'
@@ -59,6 +61,7 @@ sap.ui.define([
 		setBD: async function (link, parametr) {
 			let response = await fetch('http://lebovsky.site:5000/api/' + link, {
 				credentials: 'include',
+				mode: "no-cors",
 				method: 'POST',
 				body: JSON.stringify(parametr),
 				headers: {
@@ -178,6 +181,7 @@ sap.ui.define([
 		logout: function () {
 			fetch('http://lebovsky.site:5000/api/logout', {
 				credentials: 'include',
+				mode: "no-cors",
 				method: 'POST',
 				body: JSON.stringify(),
 				headers: {
