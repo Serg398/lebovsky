@@ -36,7 +36,7 @@ sap.ui.define([
                     body: JSON.stringify(oAuth),
                     headers: {
                         "Access-Control-Allow-Headers": "Content-Type",
-                        "Access-Control-Allow-Origin": "*",
+                        "Access-Control-Allow-Origin": "http://lebovsky.site",
                         "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
                         'Access-Control-Allow-Credentials': 'true',
                         'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ sap.ui.define([
                             credentials: 'include',
                             headers: {
                                 "Access-Control-Allow-Headers": "Content-Type",
-                                "Access-Control-Allow-Origin": "*",
+                                "Access-Control-Allow-Origin": "http://lebovsky.site",
                                 "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
                                 'Access-Control-Allow-Credentials': 'true',
                                 'Content-Type': 'application/json',
