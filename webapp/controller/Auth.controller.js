@@ -30,13 +30,13 @@ sap.ui.define([
             var oModel = this.getModel("Table");
             var oAuth = oModel.getProperty("/auth")
             if (oAuth.Email != undefined || oAuth.pass != undefined) {
-                fetch('http://62.3.58.53:5000/api/login', {
+                fetch('http://lebovsky.site:5000/api/login', {
                     credentials: 'include',
                     method: 'POST',
                     body: JSON.stringify(oAuth),
                     headers: {
                         "Access-Control-Allow-Headers": "Content-Type",
-                        "Access-Control-Allow-Origin": "http://62.3.58.53",
+                        "Access-Control-Allow-Origin": "*",
                         "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
                         'Access-Control-Allow-Credentials': 'true',
                         'Content-Type': 'application/json',
@@ -48,11 +48,11 @@ sap.ui.define([
                     if (data.status === 204) {
                         alert(data.text)
                     } else {
-                        fetch('http://62.3.58.53:5000/api/index', {
+                        fetch('http://lebovsky.site:5000/api/index', {
                             credentials: 'include',
                             headers: {
                                 "Access-Control-Allow-Headers": "Content-Type",
-                                "Access-Control-Allow-Origin": "http://62.3.58.53",
+                                "Access-Control-Allow-Origin": "*",
                                 "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
                                 'Access-Control-Allow-Credentials': 'true',
                                 'Content-Type': 'application/json',

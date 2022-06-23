@@ -12,12 +12,10 @@ sap.ui.define([
 			oModel.setProperty("/new", {})
 			oModel.setProperty("/front", [])
 			this.oRouter = this.getOwnerComponent().getRouter();
-			fetch('http://62.3.58.53:5000/api/index', {
+			fetch('http://lebovsky.site:5000/api/index', {
 				credentials: 'include',
 				headers: {
-					"Access-Control-Allow-Headers": "Content-Type",
-					"Access-Control-Allow-Origin": "http://62.3.58.53",
-					"Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+					'Access-Control-Allow-Origin': '*',
 					'Access-Control-Allow-Credentials': 'true',
 					'Content-Type': 'application/json',
 					'Accept': 'application/json'
@@ -44,12 +42,10 @@ sap.ui.define([
 
 		restUpdateList: function () {
 			var oModel = this.getModel("Table");
-			fetch('http://62.3.58.53:5000/api/index', {
+			fetch('http://lebovsky.site:5000/api/index', {
 				credentials: 'include',
 				headers: {
-					"Access-Control-Allow-Headers": "Content-Type",
-					"Access-Control-Allow-Origin": "http://62.3.58.53",
-					"Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+					'Access-Control-Allow-Origin': '*',
 					'Access-Control-Allow-Credentials': 'true',
 					'Content-Type': 'application/json',
 					'Accept': 'application/json'
@@ -64,14 +60,12 @@ sap.ui.define([
 		},
 
 		setBD: async function (link, parametr) {
-			let response = await fetch('http://62.3.58.53:5000/api/' + link, {
+			let response = await fetch('http://lebovsky.site:5000/api/' + link, {
 				credentials: 'include',
 				method: 'POST',
 				body: JSON.stringify(parametr),
 				headers: {
-					"Access-Control-Allow-Headers": "Content-Type",
-					"Access-Control-Allow-Origin": "http://62.3.58.53",
-					"Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+					'Access-Control-Allow-Origin': '*',
 					'Access-Control-Allow-Credentials': 'true',
 					'Content-Type': 'application/json',
 					'Accept': 'application/json'
@@ -187,17 +181,12 @@ sap.ui.define([
 		},
 
 		logout: function () {
-			fetch('http://62.3.58.53:5000/api/logout', {
+			fetch('http://lebovsky.site:5000/api/logout', {
 				credentials: 'include',
 				method: 'POST',
 				body: JSON.stringify(),
 				headers: {
-					"Access-Control-Allow-Headers": "Content-Type",
-					"Access-Control-Allow-Origin": "http://62.3.58.53",
-					"Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-					'Access-Control-Allow-Credentials': 'true',
-					'Content-Type': 'application/json',
-					'Accept': 'application/json'
+					'Content-Type': 'application/json'
 				}
 			}).then((response) => {
 				return response.json();
