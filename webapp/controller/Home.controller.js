@@ -194,6 +194,7 @@ sap.ui.define([
 					var oModel = this.getModel("Table");
 					oModel.setProperty("/front", {})
 					oModel.setProperty("/auth", {})
+					
 				}
 			});
 		},

@@ -33,6 +33,7 @@ sap.ui.define([
 			if (response.status === 200) {
 				alert('Регистрация прошла успешно', response.status);
 				this.oRouter.navTo("auth");
+				oModel.setProperty("/auth", {})
 			} else {
 				alert('error', response.status);
 			}
