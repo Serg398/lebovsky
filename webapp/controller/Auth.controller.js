@@ -35,11 +35,8 @@ sap.ui.define([
                     method: 'POST',
                     body: JSON.stringify(oAuth),
                     headers: {
-                        "Access-Control-Allow-Headers": "Content-Type",
-                        "Access-Control-Allow-Origin": "http://lebovsky.site",
-                        "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
+                        'Access-Control-Allow-Origin': 'http://lebovsky.site',
+                        'Content-Type': 'application/json'
                     }
                 }).then((response) => {
                     return response.json();
@@ -50,11 +47,8 @@ sap.ui.define([
                         fetch('http://lebovsky.site:5000/api/index', {
                             credentials: 'include',
                             headers: {
-                                "Access-Control-Allow-Headers": "Content-Type",
-                                "Access-Control-Allow-Origin": "http://lebovsky.site",
-                                "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-                                'Content-Type': 'application/json',
-                                'Accept': 'application/json'
+                                'Access-Control-Allow-Origin': 'http://lebovsky.site',
+                                'Content-Type': 'application/json'
                             }
                         }).then((response) => {
                             return response.json();
