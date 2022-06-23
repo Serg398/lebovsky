@@ -27,7 +27,7 @@ sap.ui.define([
 				body: JSON.stringify(oRegister),
 				headers: {
 					"Access-Control-Allow-Headers": "Content-Type",
-					"Access-Control-Allow-Origin": "http://62.3.58.53",
+					"Access-Control-Allow-Origin": "*",
 					"Access-Control-Allow-Methods": "OPTIONS,POST,GET",
 					'Access-Control-Allow-Credentials': 'true',
 					'Content-Type': 'application/json',
