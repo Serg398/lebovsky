@@ -13,7 +13,7 @@ sap.ui.define([
 			oModel.setProperty("/front", [])
 			var sHost = oModel.getProperty('/host')
 			this.oRouter = this.getOwnerComponent().getRouter();
-			fetch(sHost +':5000/api/index', {
+			fetch(sHost + ':5000/api/index', {
 				credentials: 'include',
 				headers: {
 					'Access-Control-Allow-Origin': sHost,
@@ -42,12 +42,11 @@ sap.ui.define([
 		restUpdateList: function () {
 			var oModel = this.getModel("Table");
 			var sHost = oModel.getProperty('/host')
-			fetch(sHost+':5000/api/index', {
+			fetch(sHost + ':5000/api/index', {
 				credentials: 'include',
 				headers: {
 					'Access-Control-Allow-Origin': sHost,
 					'Content-Type': 'application/json'
-					
 				}
 			}).then((response) => {
 				return response.json();
@@ -61,7 +60,7 @@ sap.ui.define([
 		setBD: async function (link, parametr) {
 			var oModel = this.getModel("Table");
 			var sHost = oModel.getProperty('/host')
-			let response = await fetch(sHost+':5000/api/' + link, {
+			let response = await fetch(sHost + ':5000/api/' + link, {
 				credentials: 'include',
 				method: 'POST',
 				body: JSON.stringify(parametr),
@@ -121,14 +120,14 @@ sap.ui.define([
 			var oNewItem = oModel.getProperty("/new");
 			var oTempItem = oModel.getProperty("/tempitem");
 			if (oNewItem.id == undefined) {
-				var sID = oFront.id[0].id + 1
-				oNewItem.id = sID
 				if (oNewItem.DP === undefined ||
 					oNewItem.money === undefined ||
 					oNewItem.Email1 === undefined ||
 					oNewItem.Email2 === undefined) {
 					MessageToast.show("Заполните все поля");
 				} else {
+					var sID = oFront.id[0].id + 1
+					oNewItem.id = sID
 					this.setBD("additem", oNewItem)
 					oModel.setProperty("/new", {})
 					oEvent.getSource().getParent().getParent().close()
@@ -182,7 +181,7 @@ sap.ui.define([
 		logout: function () {
 			var oModel = this.getModel("Table");
 			var sHost = oModel.getProperty('/host')
-			fetch(sHost+':5000/api/logout', {
+			fetch(sHost + ':5000/api/logout', {
 				credentials: 'include',
 				method: 'POST',
 				body: JSON.stringify(),
@@ -194,13 +193,11 @@ sap.ui.define([
 				return response.json();
 			}).then((data) => {
 				if (data.status === 200) {
-
 				} else {
 					this.oRouter.navTo("auth");
 					var oModel = this.getModel("Table");
 					oModel.setProperty("/front", {})
 					oModel.setProperty("/auth", {})
-					
 				}
 			});
 		},

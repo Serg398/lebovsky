@@ -58,9 +58,9 @@
 						icon="sap-icon://bell"
 						type="Transparent" /> -->
 					<Title
-						text="Баланс: {Table>/front/account/0/money} руб."
+						text="Баланс: {Table>/front/account/data/0/money} руб."
 						class="balance" />
-					<Title text="{Table>/front/account/0/name}" />
+					<Title text="{Table>/front/account/data/0/name}" />
 
 					<Avatar
 						press="pressAvatar"
