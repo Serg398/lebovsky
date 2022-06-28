@@ -136,12 +136,12 @@ sap.ui.define([
 				var oNewItem = oModel.getProperty("/new");
 				if (oNewItem.name1 === oTempItem.name1 && oNewItem.name2 === oTempItem.name2) {
 					oNewItem.oldmoney = oTempItem.money
-					BusyIndicator.show()
+					this.BusyIndicator.show(iDelay)
 					await this.setBD("edititem", oNewItem);
 					await this.restUpdateList()
 					oModel.setProperty("/new", {})
 					this.pDialog.then(function (oDialog) {
-						BusyIndicator.hide()
+						this.BusyIndicator.hide(iDelay)
 						oDialog.close();
 					});
 				} else {
@@ -161,9 +161,8 @@ sap.ui.define([
 
 		delItemList: function (oEvent) {
 			var oModel = this.getModel("Table");
-			var oItem = oEvent.getParameter("listItem"),
-				sPath = oItem.oBindingContexts.Table.sPath;
-			var oDelItem = oModel.getProperty(sPath)
+			var oContext = oEvent.getSource().getBindingContext("Table").sPath
+			var oDelItem = oModel.getProperty(oContext)
 			this.setBD("delitem", oDelItem)
 		},
 
@@ -233,5 +232,60 @@ sap.ui.define([
 				this._oMenuFragment.openBy(oButton);
 			}
 		},
+
+		hideBusyIndicator : function() {
+			BusyIndicator.hide();
+		},
+
+		showBusyIndicator : function (iDuration, iDelay) {
+			BusyIndicator.show(iDelay);
+
+			if (iDuration && iDuration > 0) {
+				if (this._sTimeoutId) {
+					clearTimeout(this._sTimeoutId);
+					this._sTimeoutId = null;
+				}
+
+				this._sTimeoutId = setTimeout(function() {
+					this.hideBusyIndicator();
+				}.bind(this), iDuration);
+			}
+		}, 
+
+		onRejectItemPress: function () {
+			if (!this.oRejectDialog) {
+				this.oRejectDialog = new Dialog({
+					title: "Reject",
+					type: DialogType.Message,
+					content: [
+						new Label({
+							text: "Do you want to reject this order?",
+							labelFor: "rejectionNote"
+						}),
+						new TextArea("rejectionNote", {
+							width: "100%",
+							placeholder: "Add note (optional)"
+						})
+					],
+					beginButton: new Button({
+						type: ButtonType.Emphasized,
+						text: "Reject",
+						press: function () {
+							var sText = Core.byId("rejectionNote").getValue();
+							MessageToast.show("Note is: " + sText);
+							this.oRejectDialog.close();
+						}.bind(this)
+					}),
+					endButton: new Button({
+						text: "Cancel",
+						press: function () {
+							this.oRejectDialog.close();
+						}.bind(this)
+					})
+				});
+			}
+
+			this.oRejectDialog.open();
+		}
 	});
 });

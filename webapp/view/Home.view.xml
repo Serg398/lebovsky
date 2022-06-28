@@ -9,8 +9,7 @@
 	<Page
 		id="Main"
 		showHeader="false"
-		enableScrolling="true"
-		class="sapUiContentPadding">
+		enableScrolling="true">
 		<tnt:ToolPage
 			id="toolPage"
 			class="toolHead">
@@ -42,14 +41,13 @@
 						</layoutData>
 					</ToolbarSpacer>
 					<tnt:ToolHeaderUtilitySeparator />
-					<Title text="{Table>/front/account/data/0/name}" />
 					<Avatar
 						src="https://img.icons8.com/color-glass/344/guest-male.png"
 						displaySize="XS"
 						backgroundColor="Transparent"></Avatar>
 					<Link
 						id="button"
-						text="Профиль"
+						text="{Table>/front/account/data/0/name} {Table>/front/account/data/0/firstname}"
 						press="onPressMenu"
 						ariaHasPopup="Menu" />
 				</tnt:ToolHeader>
@@ -115,7 +113,7 @@
 						<List
 							class="sapUiSmallMarginTop"
 							delete="delItemList"
-							mode="Delete"
+							mode="None"
 							id="ShortProductList"
 							items="{Table>/front/events}">
 							<CustomListItem
@@ -126,10 +124,11 @@
 										width="75%"
 										alignItems="Center"
 										alignContent="Center">
-										<Image
-											class="imgCahsItem"
-											src="https://img.icons8.com/nolan/344/check-dollar.png"
-											width="50px" />
+										<core:Icon
+											color="#1C4C98"
+											width="70px"
+											src="sap-icon://lead"
+											size="50px" />
 										<Text
 											class="colorText"
 											width="5rem"
@@ -145,7 +144,7 @@
 													text="Кто: "
 													class="sapUiSmallMarginBegin colorText" />
 												<Text
-													width="25rem"
+													width="20rem"
 													text="{Table>name1} {Table>firstname1}"
 													class="sapUiSmallMarginBegin colorText" />
 											</HBox>
@@ -155,28 +154,36 @@
 													text="Кому: "
 													class="sapUiSmallMarginBegin colorText" />
 												<Text
-													width="25rem"
+													width="20rem"
 													text="{Table>name2} {Table>firstname2}"
 													class="sapUiSmallMarginBegin colorText" />
 											</HBox>
 										</VBox>
 									</HBox>
 									<HBox
-										width="20%"
+										width="30%"
 										alignItems="Center"
 										alignContent="Center">
 										<Text
-											width="6.5rem"
+											width="7.5rem"
 											text="Размер суммы: "
 											class="sapUiSmallMarginBegin colorText" />
 										<Text
 											class="balance"
-											width="8rem"
+											width="7rem"
 											text="{Table>money} руб." />
-										<Image
-											width="30px"
-											src="https://img.icons8.com/color/344/comments--v1.png"
+										<core:Icon
+											src="sap-icon://post"
+											color="#1C4C98"
+											size="25px"
+											width="50px"
 											press="comentPopoverPress" />
+										<core:Icon
+											press="delItemList"
+											color="#1C4C98"
+											width="50px"
+											src="sap-icon://delete"
+											size="25px"/>
 									</HBox>
 								</HBox>
 							</CustomListItem>
