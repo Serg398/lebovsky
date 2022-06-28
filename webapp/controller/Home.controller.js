@@ -10,9 +10,9 @@ sap.ui.define([
 
 		onInit: function () {
 			var oModel = this.getModel("Table");
-			oModel.setProperty("/new", {})
-			oModel.setProperty("/front", [])
-			var sHost = oModel.getProperty('/host')
+			oModel.setProperty("/new", {});
+			oModel.setProperty("/front", []);
+			var sHost = oModel.getProperty('/host');
 			this.oRouter = this.getOwnerComponent().getRouter();
 			fetch(sHost + ':5000/api/index', {
 				credentials: 'include',
@@ -27,7 +27,7 @@ sap.ui.define([
 				if (data.status === 204) {
 					this.oRouter.navTo("auth");
 				} else {
-					oModel.setProperty("/front", data)
+					oModel.setProperty("/front", data);
 				}
 			});
 		},
@@ -42,7 +42,7 @@ sap.ui.define([
 
 		restUpdateList: function () {
 			var oModel = this.getModel("Table");
-			var sHost = oModel.getProperty('/host')
+			var sHost = oModel.getProperty('/host');
 			fetch(sHost + ':5000/api/index', {
 				credentials: 'include',
 				headers: {
@@ -53,14 +53,14 @@ sap.ui.define([
 				return response.json();
 			}).then((data) => {
 				console.log(data);
-				oModel.setProperty("/front", data)
-				return true
+				oModel.setProperty("/front", data);
+				return true;
 			});
 		},
 
 		setBD: async function (link, parametr) {
 			var oModel = this.getModel("Table");
-			var sHost = oModel.getProperty('/host')
+			var sHost = oModel.getProperty('/host');
 			let response = await fetch(sHost + ':5000/api/' + link, {
 				credentials: 'include',
 				method: 'POST',
@@ -71,8 +71,8 @@ sap.ui.define([
 				}
 			});
 			if (response.ok) {
-				await this.restUpdateList()
-				return response.status
+				await this.restUpdateList();
+				return response.status;
 			} else {
 				alert('error', response.status);
 			}
@@ -98,8 +98,8 @@ sap.ui.define([
 
 		comentPopoverPress: function (oEvent) {
 			var oModel = this.getModel("Table");
-			var oContext = oEvent.getSource().getBindingContext("Table").sPath
-			var oItem = oModel.getProperty(oContext)
+			var oContext = oEvent.getSource().getBindingContext("Table").sPath;
+			var oItem = oModel.getProperty(oContext);
 			var pop = new sap.m.Popover({
 				title: "Комментарий",
 				placement: "Bottom",
@@ -109,7 +109,7 @@ sap.ui.define([
 			})
 			pop.addEventDelegate({
 				onmouseout: function () {
-					pop.close()
+					pop.close();
 				}
 			}, this);
 			pop.openBy(oEvent.getSource());
@@ -126,9 +126,9 @@ sap.ui.define([
 					oNewItem.email2 === undefined) {
 					MessageToast.show("Заполните все поля");
 				} else {
-					this.setBD("additem", oNewItem)
-					oModel.setProperty("/new", {})
-					oEvent.getSource().getParent().getParent().close()
+					this.setBD("additem", oNewItem);
+					oModel.setProperty("/new", {});
+					oEvent.getSource().getParent().getParent().close();
 				};
 			} else {
 				var oModel = this.getModel("Table");
@@ -136,12 +136,10 @@ sap.ui.define([
 				var oNewItem = oModel.getProperty("/new");
 				if (oNewItem.name1 === oTempItem.name1 && oNewItem.name2 === oTempItem.name2) {
 					oNewItem.oldmoney = oTempItem.money
-					this.BusyIndicator.show(iDelay)
 					await this.setBD("edititem", oNewItem);
-					await this.restUpdateList()
-					oModel.setProperty("/new", {})
+					await this.restUpdateList();
+					await oModel.setProperty("/new", {});
 					this.pDialog.then(function (oDialog) {
-						this.BusyIndicator.hide(iDelay)
 						oDialog.close();
 					});
 				} else {
@@ -152,8 +150,8 @@ sap.ui.define([
 
 		onCloseDialog: function () {
 			var oModel = this.getModel("Table");
-			oModel.setProperty("/new", {})
-			this.restUpdateList()
+			oModel.setProperty("/new", {});
+			this.restUpdateList();
 			this.pDialog.then(function (oDialog) {
 				oDialog.close();
 			})
@@ -161,20 +159,20 @@ sap.ui.define([
 
 		delItemList: function (oEvent) {
 			var oModel = this.getModel("Table");
-			var oContext = oEvent.getSource().getBindingContext("Table").sPath
-			var oDelItem = oModel.getProperty(oContext)
-			this.setBD("delitem", oDelItem)
+			var oContext = oEvent.getSource().getBindingContext("Table").sPath;
+			var oDelItem = oModel.getProperty(oContext);
+			this.setBD("delitem", oDelItem);
 		},
 
 		playItem: function (oEvent) {
 			var oModel = this.getModel("Table");
-			var oContext = oEvent.getSource().getBindingContext("Table").sPath
-			var oItem = oModel.getProperty(oContext)
+			var oContext = oEvent.getSource().getBindingContext("Table").sPath;
+			var oItem = oModel.getProperty(oContext);
 			var oClone = {};
-			Object.assign(oClone, oItem)
-			oModel.setProperty("/tempitem", oClone)
-			oModel.setProperty("/new", oItem)
-			this.openFragment()
+			Object.assign(oClone, oItem);
+			oModel.setProperty("/tempitem", oClone);
+			oModel.setProperty("/new", oItem);
+			this.openFragment();
 		},
 
 		logout: function () {
@@ -210,7 +208,6 @@ sap.ui.define([
 				navCon.back();
 			}
 		},
-		
 		pressSettings: function(){
 			this.oRouter.navTo("profile");
 		},
@@ -231,61 +228,6 @@ sap.ui.define([
 			} else {
 				this._oMenuFragment.openBy(oButton);
 			}
-		},
-
-		hideBusyIndicator : function() {
-			BusyIndicator.hide();
-		},
-
-		showBusyIndicator : function (iDuration, iDelay) {
-			BusyIndicator.show(iDelay);
-
-			if (iDuration && iDuration > 0) {
-				if (this._sTimeoutId) {
-					clearTimeout(this._sTimeoutId);
-					this._sTimeoutId = null;
-				}
-
-				this._sTimeoutId = setTimeout(function() {
-					this.hideBusyIndicator();
-				}.bind(this), iDuration);
-			}
-		}, 
-
-		onRejectItemPress: function () {
-			if (!this.oRejectDialog) {
-				this.oRejectDialog = new Dialog({
-					title: "Reject",
-					type: DialogType.Message,
-					content: [
-						new Label({
-							text: "Do you want to reject this order?",
-							labelFor: "rejectionNote"
-						}),
-						new TextArea("rejectionNote", {
-							width: "100%",
-							placeholder: "Add note (optional)"
-						})
-					],
-					beginButton: new Button({
-						type: ButtonType.Emphasized,
-						text: "Reject",
-						press: function () {
-							var sText = Core.byId("rejectionNote").getValue();
-							MessageToast.show("Note is: " + sText);
-							this.oRejectDialog.close();
-						}.bind(this)
-					}),
-					endButton: new Button({
-						text: "Cancel",
-						press: function () {
-							this.oRejectDialog.close();
-						}.bind(this)
-					})
-				});
-			}
-
-			this.oRejectDialog.open();
 		}
 	});
 });

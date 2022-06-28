@@ -125,6 +125,7 @@
 										alignItems="Center"
 										alignContent="Center">
 										<core:Icon
+											class="imgCahsItem"
 											color="#1C4C98"
 											width="70px"
 											src="sap-icon://lead"
