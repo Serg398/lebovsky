@@ -8,8 +8,7 @@
     <Page
         id="Register"
         showHeader="false"
-        class="sapUiSizeCompact"
-        enableScrolling="false">
+        class="sapUiSizeCompact">
         <HBox class="auth">
             <VBox>
                 <Label text="Регистрация" class="regLabel colorText"/>

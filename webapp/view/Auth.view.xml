@@ -8,8 +8,7 @@
     <Page
         id="Auth"
         class="sapUiSizeCompact"
-        showHeader="false"
-        enableScrolling="false">
+        showHeader="false">
         <HBox class="auth">
             <VBox>
                 <Label  text="Авторизация в системе" class="authLabel colorText"/>

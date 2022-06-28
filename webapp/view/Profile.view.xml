@@ -1,0 +1,72 @@
+<mvc:View
+    controllerName="sap.ui.demo.basicTemplate.controller.Profile"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+    displayBlock="true">
+    <Page
+        id="Profile"
+        class="sapUiSizeCompact"
+        showHeader="false">
+        <tnt:ToolPage
+			id="toolPage"
+			class="toolHead">
+			<tnt:header>
+				<tnt:ToolHeader>
+					<Image
+						height="2.5rem"
+						src="https://cdn.icon-icons.com/icons2/1091/PNG/512/profits_78367.png" />
+					<Title
+						level="H1"
+						text="Система учета финансов">
+						<layoutData>
+							<OverflowToolbarLayoutData shrinkable="true" />
+						</layoutData>
+					</Title>
+					<Title
+						level="H3"
+						titleStyle="H6"
+						text="">
+						<layoutData>
+							<OverflowToolbarLayoutData shrinkable="true" />
+						</layoutData>
+					</Title>
+					<ToolbarSpacer>
+						<layoutData>
+							<OverflowToolbarLayoutData
+								priority="NeverOverflow"
+								minWidth="20px" />
+						</layoutData>
+					</ToolbarSpacer>
+					<tnt:ToolHeaderUtilitySeparator />
+					<Title
+						text="Баланс: {Table>/front/account/data/0/money} руб."
+						class="balance" />
+					<Title text="{Table>/front/account/data/0/name}" />
+					<Avatar
+						src="https://img.icons8.com/color-glass/344/guest-male.png"
+						displaySize="XS"
+						backgroundColor="Transparent"></Avatar>
+				</tnt:ToolHeader>
+			</tnt:header>
+			<tnt:mainContents>
+				<NavContainer id="navCon">
+					<Page
+						id="p1"
+						showHeader="false"
+						title="События">
+                        <Toolbar>
+							<Label text="Настройки"/>
+						</Toolbar>
+                        
+
+
+					</Page>
+				</NavContainer>
+			</tnt:mainContents>
+		</tnt:ToolPage>
+
+    </Page>
+</mvc:View>

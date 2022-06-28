@@ -97,6 +97,13 @@
 					"target": [
 						"register"
 					]
+				},
+				{
+					"pattern": "profile/:path:",
+					"name": "profile",
+					"target": [
+						"profile"
+					]
 				}
 				
 			],
@@ -115,6 +122,11 @@
 				"auth": {
 					"viewName": "Auth",
 					"viewId": "auth",
+					"viewLevel": 1
+				},
+				"profile": {
+					"viewName": "Profile",
+					"viewId": "profile",
 					"viewLevel": 1
 				}
 			}

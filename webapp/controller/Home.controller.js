@@ -1,8 +1,9 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	'sap/ui/core/Fragment',
-	'sap/m/MessageToast'
-], function (Controller, Fragment, MessageToast) {
+	'sap/m/MessageToast',
+	'sap/ui/core/BusyIndicator'
+], function (Controller, Fragment, MessageToast, BusyIndicator) {
 	"use strict";
 
 	return Controller.extend("sap.ui.demo.basicTemplate.controller.Home", {
@@ -116,18 +117,15 @@ sap.ui.define([
 
 		addEvent: async function (oEvent) {
 			var oModel = this.getModel("Table");
-			var oFront = oModel.getProperty("/front")
 			var oNewItem = oModel.getProperty("/new");
 			var oTempItem = oModel.getProperty("/tempitem");
 			if (oNewItem.id == undefined) {
 				if (oNewItem.DP === undefined ||
 					oNewItem.money === undefined ||
-					oNewItem.Email1 === undefined ||
-					oNewItem.Email2 === undefined) {
+					oNewItem.email1 === undefined ||
+					oNewItem.email2 === undefined) {
 					MessageToast.show("Заполните все поля");
 				} else {
-					var sID = oFront.id[0].id + 1
-					oNewItem.id = sID
 					this.setBD("additem", oNewItem)
 					oModel.setProperty("/new", {})
 					oEvent.getSource().getParent().getParent().close()
@@ -138,10 +136,12 @@ sap.ui.define([
 				var oNewItem = oModel.getProperty("/new");
 				if (oNewItem.name1 === oTempItem.name1 && oNewItem.name2 === oTempItem.name2) {
 					oNewItem.oldmoney = oTempItem.money
+					BusyIndicator.show()
 					await this.setBD("edititem", oNewItem);
 					await this.restUpdateList()
 					oModel.setProperty("/new", {})
 					this.pDialog.then(function (oDialog) {
+						BusyIndicator.hide()
 						oDialog.close();
 					});
 				} else {
@@ -210,6 +210,28 @@ sap.ui.define([
 			} else {
 				navCon.back();
 			}
-		}
+		},
+		
+		pressSettings: function(){
+			this.oRouter.navTo("profile");
+		},
+
+		onPressMenu: function () {
+			var oView = this.getView(),
+				oButton = oView.byId("button");
+			if (!this._oMenuFragment) {
+				this._oMenuFragment = Fragment.load({
+					id: oView.getId(),
+					name: "sap.ui.demo.basicTemplate.view.Menu",
+					controller: this
+				}).then(function(oMenu) {
+					oMenu.openBy(oButton);
+					this._oMenuFragment = oMenu;
+					return this._oMenuFragment;
+				}.bind(this));
+			} else {
+				this._oMenuFragment.openBy(oButton);
+			}
+		},
 	});
 });

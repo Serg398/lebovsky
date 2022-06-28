@@ -26,10 +26,10 @@
             <Select
                 width="12rem"
                 forceSelection="false"
-                selectedKey="{Table>/new/Email1}"
+                selectedKey="{Table>/new/email1}"
                 items="{Table>/front/users}">
                 <core:Item
-                    key="{Table>Email}"
+                    key="{Table>email}"
                     text="{Table>name} {Table>firstname}" />
             </Select>
             <Text
@@ -38,11 +38,11 @@
                 class="fragment colorText" />
             <Select
                 forceSelection="false"
-                selectedKey="{Table>/new/Email2}"
+                selectedKey="{Table>/new/email2}"
                 items="{Table>/front/users}"
                 width="12rem">
                 <core:Item
-                    key="{Table>Email}"
+                    key="{Table>email}"
                     text="{Table>name} {Table>firstname}" />
             </Select>
             <Text
