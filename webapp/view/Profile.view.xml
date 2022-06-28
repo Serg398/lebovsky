@@ -68,8 +68,7 @@
                                 id="fileUploader"
                                 name="myFileUpload"
                                 uploadUrl="upload/"
-                                tooltip="Upload your file to the local server"
-                                 />
+                                tooltip="Upload your file to the local server" />
                             <Button
                                 text="Upload File"
                                 press="handleUploadPress" />
@@ -139,7 +138,5 @@
                 </Button>
             </OverflowToolbar>
         </footer>
-
-
     </Page>
 </mvc:View>

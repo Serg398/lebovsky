@@ -72,7 +72,7 @@
             <Button
                 type="Reject"
                 text="Отмена"
-                press="onCloseDialog"
+                press="onCloseDialogEvent"
                 class="sapUiSmallMarginBegin"></Button>
         </HBox>
     </Dialog>

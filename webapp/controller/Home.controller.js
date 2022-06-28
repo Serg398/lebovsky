@@ -148,7 +148,7 @@ sap.ui.define([
 			}
 		},
 
-		onCloseDialog: function () {
+		onCloseDialogEvent: function () {
 			var oModel = this.getModel("Table");
 			oModel.setProperty("/new", {});
 			this.restUpdateList();
@@ -157,14 +157,14 @@ sap.ui.define([
 			})
 		},
 
-		delItemList: function (oEvent) {
+		deleteEvent: function (oEvent) {
 			var oModel = this.getModel("Table");
 			var oContext = oEvent.getSource().getBindingContext("Table").sPath;
 			var oDelItem = oModel.getProperty(oContext);
 			this.setBD("delitem", oDelItem);
 		},
 
-		playItem: function (oEvent) {
+		pressEvent: function (oEvent) {
 			var oModel = this.getModel("Table");
 			var oContext = oEvent.getSource().getBindingContext("Table").sPath;
 			var oItem = oModel.getProperty(oContext);

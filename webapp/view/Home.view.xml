@@ -118,7 +118,7 @@
 							items="{Table>/front/events}">
 							<CustomListItem
 								type="Active"
-								press="playItem">
+								press="pressEvent">
 								<HBox>
 									<HBox
 										width="75%"
@@ -128,7 +128,7 @@
 											class="imgCahsItem"
 											color="#1C4C98"
 											width="70px"
-											src="sap-icon://lead"
+											src="sap-icon://credit-card"
 											size="50px" />
 										<Text
 											class="colorText"
@@ -180,7 +180,7 @@
 											width="50px"
 											press="comentPopoverPress" />
 										<core:Icon
-											press="delItemList"
+											press="deleteEvent"
 											color="#1C4C98"
 											width="50px"
 											src="sap-icon://delete"
