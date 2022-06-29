@@ -79,9 +79,6 @@ sap.ui.define([
 		},
 
 		openFragment: function () {
-			var oModel = this.getModel("Table");
-			var oUsers = oModel.getProperty("/front")
-			console.log(oUsers)
 			if (!this.pDialog) {
 				this.pDialog = Fragment.load({
 					name: "sap.ui.demo.basicTemplate.view.AddEvent",
@@ -128,7 +125,9 @@ sap.ui.define([
 				} else {
 					this.setBD("additem", oNewItem);
 					oModel.setProperty("/new", {});
-					oEvent.getSource().getParent().getParent().close();
+					this.pDialog.then(function (oDialog) {
+						oDialog.close();
+					})
 				};
 			} else {
 				var oModel = this.getModel("Table");

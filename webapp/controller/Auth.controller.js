@@ -11,9 +11,7 @@ sap.ui.define([
             oModel.setProperty("/auth", {})
             this.oRouter = this.getOwnerComponent().getRouter();
         },
-        _onRouteMatched: function (oEvent) {
-        },
-
+        
         getModel: function (sName) {
             return this.getView().getModel(sName) || this.getOwnerComponent().getModel(sName);
         },
