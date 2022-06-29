@@ -2,8 +2,9 @@ sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	'sap/ui/core/Fragment',
 	'sap/m/MessageToast',
-	'sap/ui/core/BusyIndicator'
-], function (Controller, Fragment, MessageToast, BusyIndicator) {
+	'sap/ui/core/BusyIndicator',
+	"sap/m/MessageBox"
+], function (Controller, Fragment, MessageToast, BusyIndicator, MessageBox) {
 	"use strict";
 
 	return Controller.extend("sap.ui.demo.basicTemplate.controller.Home", {
@@ -12,6 +13,7 @@ sap.ui.define([
 			var oModel = this.getModel("Table");
 			oModel.setProperty("/new", {});
 			oModel.setProperty("/front", []);
+			oModel.setProperty("/date", new Date())
 			var sHost = oModel.getProperty('/host');
 			this.oRouter = this.getOwnerComponent().getRouter();
 			fetch(sHost + ':5000/api/index', {
@@ -79,6 +81,7 @@ sap.ui.define([
 		},
 
 		openFragment: function () {
+
 			if (!this.pDialog) {
 				this.pDialog = Fragment.load({
 					name: "sap.ui.demo.basicTemplate.view.AddEvent",
@@ -112,7 +115,7 @@ sap.ui.define([
 			pop.openBy(oEvent.getSource());
 		},
 
-		addEvent: async function (oEvent) {
+		addEvent: async function () {
 			var oModel = this.getModel("Table");
 			var oNewItem = oModel.getProperty("/new");
 			var oTempItem = oModel.getProperty("/tempitem");
@@ -125,22 +128,31 @@ sap.ui.define([
 				} else {
 					this.setBD("additem", oNewItem);
 					oModel.setProperty("/new", {});
+					await this.restUpdateList();
 					this.pDialog.then(function (oDialog) {
 						oDialog.close();
-					})
+						oDialog.destroy();
+						this.pDialog = null;
+					}.bind(this))
 				};
 			} else {
 				var oModel = this.getModel("Table");
 				var oTempItem = oModel.getProperty("/tempitem");
 				var oNewItem = oModel.getProperty("/new");
-				if (oNewItem.name1 === oTempItem.name1 && oNewItem.name2 === oTempItem.name2) {
-					oNewItem.oldmoney = oTempItem.money
+				if (oNewItem.name1 ===
+					oTempItem.name1 &&
+					oNewItem.name2 ===
+					oTempItem.name2) {
+					oNewItem.oldmoney =
+						oTempItem.money
 					await this.setBD("edititem", oNewItem);
 					await this.restUpdateList();
 					await oModel.setProperty("/new", {});
 					this.pDialog.then(function (oDialog) {
 						oDialog.close();
-					});
+						oDialog.destroy();
+						this.pDialog = null;
+					}.bind(this));
 				} else {
 					MessageToast.show("Нельзя менять имена");
 				}
@@ -159,9 +171,24 @@ sap.ui.define([
 		deleteEvent: function (oEvent) {
 			var oModel = this.getModel("Table");
 			var oContext = oEvent.getSource().getBindingContext("Table").sPath;
-			var oDelItem = oModel.getProperty(oContext);
-			this.setBD("delitem", oDelItem);
+			MessageBox.warning("Вы действительно хотите удалить транзакцию?", {
+				actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
+				emphasizedAction: MessageBox.Action.OK,
+				onClose: function (sAction) {
+					if (sAction === "OK") {
+						var oDelItem = oModel.getProperty(oContext);
+						this.setBD("delitem", oDelItem);
+					}
+				}.bind(this)
+			});
 		},
+
+		// deleteEvent: function (oEvent) {
+		// 	var oModel = this.getModel("Table");
+		// 	var oContext = oEvent.getSource().getBindingContext("Table").sPath;
+		// 	var oDelItem = oModel.getProperty(oContext);
+		// 	this.setBD("delitem", oDelItem);
+		// },
 
 		pressEvent: function (oEvent) {
 			var oModel = this.getModel("Table");
@@ -207,7 +234,7 @@ sap.ui.define([
 				navCon.back();
 			}
 		},
-		pressSettings: function(){
+		pressSettings: function () {
 			this.oRouter.navTo("profile");
 		},
 
@@ -219,7 +246,7 @@ sap.ui.define([
 					id: oView.getId(),
 					name: "sap.ui.demo.basicTemplate.view.Menu",
 					controller: this
-				}).then(function(oMenu) {
+				}).then(function (oMenu) {
 					oMenu.openBy(oButton);
 					this._oMenuFragment = oMenu;
 					return this._oMenuFragment;

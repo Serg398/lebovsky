@@ -66,9 +66,7 @@
                                 backgroundColor="Transparent" />
                             <u:FileUploader
                                 id="fileUploader"
-                                name="myFileUpload"
-                                uploadUrl="upload/"
-                                tooltip="Upload your file to the local server" />
+                                name="file"/>
                             <Button
                                 text="Upload File"
                                 press="handleUploadPress" />

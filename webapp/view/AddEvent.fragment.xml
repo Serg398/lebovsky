@@ -38,9 +38,9 @@
                                 </f:label>
                                 <f:fields>
                                     <Select
-                                        forceSelection="false"
+                                        editable="false"
                                         selectedKey="{Table>/new/email1}"
-                                        items="{Table>/front/users}">
+                                        items="{Table>/front/account/data}">
                                         <core:Item
                                             key="{Table>email}"
                                             text="{Table>name} {Table>firstname}" />

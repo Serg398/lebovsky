@@ -38,6 +38,8 @@ sap.ui.define([
 
 			var sUrl = window.location.hostname === 'lebovsky.site' ? 'http://lebovsky.site' : 'http://127.0.0.1'
 			oModel.setProperty("/host", sUrl)
+
+			
 		}
 	});
 });
