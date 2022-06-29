@@ -183,13 +183,6 @@ sap.ui.define([
 			});
 		},
 
-		// deleteEvent: function (oEvent) {
-		// 	var oModel = this.getModel("Table");
-		// 	var oContext = oEvent.getSource().getBindingContext("Table").sPath;
-		// 	var oDelItem = oModel.getProperty(oContext);
-		// 	this.setBD("delitem", oDelItem);
-		// },
-
 		pressEvent: function (oEvent) {
 			var oModel = this.getModel("Table");
 			var oContext = oEvent.getSource().getBindingContext("Table").sPath;

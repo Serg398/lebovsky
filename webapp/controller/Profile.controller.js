@@ -39,32 +39,29 @@ sap.ui.define([
 			this.oRouter.navTo("home")
 		},
 
-
-
-		handleUploadPress: function () {
-			var oModel = this.getModel("Table");
-			var sHost = oModel.getProperty('/host');
+		// handleUploadPress: function () {
+		// 	var oModel = this.getModel("Table");
+		// 	var sHost = oModel.getProperty('/host');
 			
-			var oFileUploader = this.byId("fileUploader");
-			var domRef = oFileUploader.getFocusDomRef();
- 			var file = domRef.files[0];
+		// 	var oFileUploader = this.byId("fileUploader");
+		// 	var domRef = oFileUploader.getFocusDomRef();
+ 		// 	var file = domRef.files[0];
 			
-			var response = fetch(sHost + ':5000/api/upload', {
-				credentials: 'include',
-				method: 'POST',
-				body: file,
-				headers: {
-					'Access-Control-Allow-Origin': sHost,
-					'Content-Type': 'image/png'
-				}
-			});
-			if (response.ok) {
-				this.restUpdateList();
-				return response.status;
-			} else {
-				alert('error', response.status);
-			}
-
-		}
+		// 	var response = fetch(sHost + ':5000/api/upload', {
+		// 		credentials: 'include',
+		// 		method: 'POST',
+		// 		body: file,
+		// 		headers: {
+		// 			'Access-Control-Allow-Origin': sHost,
+		// 			'Content-Type': 'image/png'
+		// 		}
+		// 	});
+		// 	if (response.ok) {
+		// 		this.restUpdateList();
+		// 		return response.status;
+		// 	} else {
+		// 		alert('error', response.status);
+		// 	}
+		// }
 	});
 });
