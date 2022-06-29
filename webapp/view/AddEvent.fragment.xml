@@ -31,10 +31,11 @@
                                         value="{Table>/new/DP}" />
                                 </f:fields>
                             </f:FormElement>
-
                             <f:FormElement>
                                 <f:label>
-                                    <Label text="Вы" required="true" />
+                                    <Label
+                                        text="Вы"
+                                        required="true" />
                                 </f:label>
                                 <f:fields>
                                     <Select
@@ -47,10 +48,11 @@
                                     </Select>
                                 </f:fields>
                             </f:FormElement>
-
                             <f:FormElement>
                                 <f:label>
-                                    <Label text="Кому" required="true" />
+                                    <Label
+                                        text="Кому"
+                                        required="true" />
                                 </f:label>
                                 <f:fields>
                                     <Select
@@ -63,20 +65,19 @@
                                     </Select>
                                 </f:fields>
                             </f:FormElement>
-
                             <f:FormElement>
                                 <f:label>
-                                    <Label text="Сумма" required="true" />
+                                    <Label
+                                        text="Сумма"
+                                        required="true" />
                                 </f:label>
                                 <f:fields>
                                     <Input
                                         value="{path: 'Table>/new/money',
                                                 type: 'sap.ui.model.type.Integer'}"
-                                        placeholder="Введите сумму"
-                                        />
+                                        placeholder="Введите сумму" />
                                 </f:fields>
                             </f:FormElement>
-
                             <f:FormElement>
                                 <f:label>
                                     <Label text="Комментарий" />
@@ -84,11 +85,9 @@
                                 <f:fields>
                                     <Input
                                         value="{Table>/new/comments}"
-                                        placeholder="Комментарий"
-                                        />
+                                        placeholder="Комментарий" />
                                 </f:fields>
                             </f:FormElement>
-
                         </f:FormContainer>
                     </f:formContainers>
                 </f:Form>
@@ -104,85 +103,8 @@
                         type="Reject"
                         text="Отмена"
                         press="onCloseDialogEvent" />
-
-
                 </Toolbar>
             </footer>
         </Page>
     </Dialog>
-    <!-- <Dialog
-        class="sapUiSizeCompact"
-        contentHeight="300px"
-        contentWidth="800px"
-        title="Новый чек">
-        <HBox>
-            <Text
-                width="3rem"
-                text="Дата: "
-                class="fragment colorText" />
-            <DatePicker
-                width="12rem"
-                id="DP"
-                displayFormat="short"
-                class="fragment"
-                value="{Table>/new/DP}" />
-        </HBox>
-        <HBox>
-            <Text
-                text="От: "
-                width="3rem"
-                class="fragment colorText" />
-            <Select
-                width="12rem"
-                forceSelection="false"
-                selectedKey="{Table>/new/email1}"
-                items="{Table>/front/users}">
-                <core:Item
-                    key="{Table>email}"
-                    text="{Table>name} {Table>firstname}" />
-            </Select>
-            <Text
-                text="Кому: "
-                width="3rem"
-                class="fragment colorText" />
-            <Select
-                forceSelection="false"
-                selectedKey="{Table>/new/email2}"
-                items="{Table>/front/users}"
-                width="12rem">
-                <core:Item
-                    key="{Table>email}"
-                    text="{Table>name} {Table>firstname}" />
-            </Select>
-            <Text
-                text="Сумма: "
-                width="3rem"
-                class="fragment colorText" />
-            <Input
-                value="{path: 'Table>/new/money',
-                        type: 'sap.ui.model.type.Integer'}"
-                placeholder="Введите сумму"
-                class="sapUiSmallMarginBegin" />
-        </HBox>
-        <Text
-            text="Комментарий:"
-            width="6rem"
-            class="fragment colorText" />
-        <Input
-            value="{Table>/new/comments}"
-            placeholder="Комментарий"
-            class="fragment" />
-        <HBox class="fragmentButton">
-            <Button
-                type="Accept"
-                text="Отправить"
-                press="addEvent"
-                class="sapUiSmallMarginBegin"></Button>
-            <Button
-                type="Reject"
-                text="Отмена"
-                press="onCloseDialogEvent"
-                class="sapUiSmallMarginBegin"></Button>
-        </HBox>
-    </Dialog> -->
 </core:FragmentDefinition>

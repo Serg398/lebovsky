@@ -11,8 +11,10 @@
         showHeader="false">
         <HBox class="auth">
             <VBox>
-                <Label  text="Авторизация в системе" class="authLabel colorText"/>
-                <Input 
+                <Label
+                    text="Авторизация в системе"
+                    class="authLabel colorText" />
+                <Input
                     width="15rem"
                     type="Email"
                     value="{Table>/auth/Email}"
@@ -23,21 +25,21 @@
                     type="Password"
                     placeholder="Пароль"
                     class="sapUiSmallMarginBottom" />
-            <HBox>
-                <Button
-                    type="Accept"
-                    text="Войти"
-                    press="singIn"
-                    ariaDescribedBy="acceptButtonDescription genericButtonDescription">
-                    <layoutData>
-                        <FlexItemData growFactor="1" />
-                    </layoutData>
-                </Button>
-            <Button
-                text="Зарегистрироваться"
-                press="routeReg" />
-            </HBox>
-        </VBox>
+                <HBox>
+                    <Button
+                        type="Accept"
+                        text="Войти"
+                        press="singIn"
+                        ariaDescribedBy="acceptButtonDescription genericButtonDescription">
+                        <layoutData>
+                            <FlexItemData growFactor="1" />
+                        </layoutData>
+                    </Button>
+                    <Button
+                        text="Зарегистрироваться"
+                        press="routeReg" />
+                </HBox>
+            </VBox>
         </HBox>
     </Page>
 </mvc:View>

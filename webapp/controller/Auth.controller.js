@@ -1,23 +1,16 @@
 sap.ui.define([
+    './BaseController',
     "sap/ui/core/mvc/Controller",
     'sap/m/MessageToast'
-], function (Controller, MessageToast) {
+], function (BaseController, Controller, MessageToast) {
     "use strict";
 
-    return Controller.extend("sap.ui.demo.basicTemplate.controller.Auth", {
+    return BaseController.extend("sap.ui.demo.basicTemplate.controller.Auth", {
 
         onInit: function () {
             var oModel = this.getModel("Table");
             oModel.setProperty("/auth", {})
             this.oRouter = this.getOwnerComponent().getRouter();
-        },
-        
-        getModel: function (sName) {
-            return this.getView().getModel(sName) || this.getOwnerComponent().getModel(sName);
-        },
-
-        setModel: function (oModel, sName) {
-            return this.getView().setModel(oModel, sName);
         },
 
         routeReg: function () {
@@ -27,9 +20,9 @@ sap.ui.define([
         singIn: function () {
             var oModel = this.getModel("Table");
             var oAuth = oModel.getProperty("/auth")
-			var sHost = oModel.getProperty('/host')
+            var sHost = oModel.getProperty('/host')
             if (oAuth.Email != undefined || oAuth.pass != undefined) {
-                fetch(sHost+':5000/api/login', {
+                fetch(sHost + ':5000/api/login', {
                     credentials: 'include',
                     method: 'POST',
                     body: JSON.stringify(oAuth),
@@ -43,7 +36,7 @@ sap.ui.define([
                     if (data.status === 204) {
                         alert(data.text)
                     } else {
-                        fetch(sHost+':5000/api/index', {
+                        fetch(sHost + ':5000/api/index', {
                             credentials: 'include',
                             headers: {
                                 'Access-Control-Allow-Origin': sHost,

@@ -1,9 +1,10 @@
 sap.ui.define([
+	'./BaseController',
 	"sap/ui/core/mvc/Controller",
-], function (Controller) {
+], function (BaseController) {
 	"use strict";
 
-	return Controller.extend("sap.ui.demo.basicTemplate.controller.Profile", {
+	return BaseController.extend("sap.ui.demo.basicTemplate.controller.Profile", {
 
 		onInit: function () {
 			this.oRouter = this.getOwnerComponent().getRouter();
@@ -27,14 +28,6 @@ sap.ui.define([
 			});
 		},
 
-		getModel: function (sName) {
-			return this.getView().getModel(sName) || this.getOwnerComponent().getModel(sName);
-		},
-
-		setModel: function (oModel, sName) {
-			return this.getView().setModel(oModel, sName);
-		},
-
 		cancelSetting: function () {
 			this.oRouter.navTo("home")
 		},
@@ -42,11 +35,11 @@ sap.ui.define([
 		// handleUploadPress: function () {
 		// 	var oModel = this.getModel("Table");
 		// 	var sHost = oModel.getProperty('/host');
-			
+
 		// 	var oFileUploader = this.byId("fileUploader");
 		// 	var domRef = oFileUploader.getFocusDomRef();
- 		// 	var file = domRef.files[0];
-			
+		// 	var file = domRef.files[0];
+
 		// 	var response = fetch(sHost + ':5000/api/upload', {
 		// 		credentials: 'include',
 		// 		method: 'POST',

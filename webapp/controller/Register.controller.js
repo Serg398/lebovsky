@@ -1,28 +1,22 @@
 sap.ui.define([
+	'./BaseController',
 	"sap/ui/core/mvc/Controller",
-], function (Controller) {
+], function (BaseController) {
 	"use strict";
 
-	return Controller.extend("sap.ui.demo.basicTemplate.controller.Register", {
+	return BaseController.extend("sap.ui.demo.basicTemplate.controller.Register", {
 
 		onInit: function () {
 			var oModel = this.getModel("Table");
 			oModel.setProperty("/register", {})
 			this.oRouter = this.getOwnerComponent().getRouter();
 		},
-		getModel: function (sName) {
-			return this.getView().getModel(sName) || this.getOwnerComponent().getModel(sName);
-		},
-
-		setModel: function (oModel, sName) {
-			return this.getView().setModel(oModel, sName);
-		},
 
 		addUser: async function () {
 			var oModel = this.getModel("Table");
 			var oRegister = oModel.getProperty("/register")
 			var sHost = oModel.getProperty('/host')
-			let response = await fetch(sHost+':5000/api/register', {
+			let response = await fetch(sHost + ':5000/api/register', {
 				credentials: 'include',
 				method: 'POST',
 				body: JSON.stringify(oRegister),

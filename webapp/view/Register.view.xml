@@ -11,13 +11,15 @@
         class="sapUiSizeCompact">
         <HBox class="auth">
             <VBox>
-                <Label text="Регистрация" class="regLabel colorText"/>
-                <Input 
+                <Label
+                    text="Регистрация"
+                    class="regLabel colorText" />
+                <Input
                     width="15rem"
                     value="{Table>/register/name}"
                     placeholder="Имя"
                     class="sapUiSmallMarginBottom" />
-                <Input 
+                <Input
                     width="15rem"
                     value="{Table>/register/firstname}"
                     placeholder="Фамилия"

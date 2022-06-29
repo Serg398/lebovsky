@@ -1,13 +1,14 @@
 sap.ui.define([
+	'./BaseController',
 	"sap/ui/core/mvc/Controller",
 	'sap/ui/core/Fragment',
 	'sap/m/MessageToast',
 	'sap/ui/core/BusyIndicator',
 	"sap/m/MessageBox"
-], function (Controller, Fragment, MessageToast, BusyIndicator, MessageBox) {
+], function (BaseController, Controller, Fragment, MessageToast, BusyIndicator, MessageBox) {
 	"use strict";
 
-	return Controller.extend("sap.ui.demo.basicTemplate.controller.Home", {
+	return BaseController.extend("sap.ui.demo.basicTemplate.controller.Home", {
 
 		onInit: function () {
 			var oModel = this.getModel("Table");
@@ -32,14 +33,6 @@ sap.ui.define([
 					oModel.setProperty("/front", data);
 				}
 			});
-		},
-
-		getModel: function (sName) {
-			return this.getView().getModel(sName) || this.getOwnerComponent().getModel(sName);
-		},
-
-		setModel: function (oModel, sName) {
-			return this.getView().setModel(oModel, sName);
 		},
 
 		restUpdateList: function () {
@@ -81,7 +74,6 @@ sap.ui.define([
 		},
 
 		openFragment: function () {
-
 			if (!this.pDialog) {
 				this.pDialog = Fragment.load({
 					name: "sap.ui.demo.basicTemplate.view.AddEvent",
